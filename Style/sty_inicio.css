@@ -20,11 +20,13 @@ box-sizing: border-box;
 
 
 .h1 {
-
+    background-color: #4c6b35;
+    display: flex;
     margin-left: 200px;
     padding: 20px;
     width: 100%;
     background-color: white;
+
 }
 
 
@@ -32,6 +34,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     display: flex;
+    justify-content: space-between;
     height: 100vh;
 }
 
@@ -51,4 +54,12 @@ list-style-type:none;
 
 li{
 padding:  10px 0px 10px ;
+}
+
+
+img{
+
+height: 50px;
+margin-left:  800px;
+
 }
