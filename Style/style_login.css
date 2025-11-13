@@ -1,15 +1,11 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f1f5f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
@@ -17,13 +13,10 @@ body {
 .menu {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     width:100%;
 
     height: 100%;
     background-color: #fff;
-    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
@@ -46,7 +39,7 @@ body {
 
 
 .login {
-    background-color: #ffffff;
+    background-color: #f6f6f6; 
     width: 50%;
     height: 100%;
     display: flex;
@@ -54,6 +47,7 @@ body {
     justify-content: center;
     align-items: center;
     border-left: 1px solid #ccc; 
+
 }
 
 h1 {
@@ -71,12 +65,11 @@ label {
 }
 
 input {
-    width: 100%;
-    max-width: 350px;
+    
+    max-width: 600px;
     font-size: 18px;
     padding: 10px;
     margin-bottom: 25px;
-    padding-left: 100px;
     border: 1px solid #ccc;
     border-radius: 6px;
     transition: border-color 0.3s ease;
@@ -99,6 +92,8 @@ button {
 
 .div_borda{
     border-radius: 10px;
-    box-shadow: 5px;
+    box-shadow: 3px 3px 8px   black;
+    background-color: white;
+    padding: 50px 100px;
 }
 
