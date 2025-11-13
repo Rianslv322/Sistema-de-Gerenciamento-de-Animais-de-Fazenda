@@ -65,13 +65,12 @@ label {
 }
 
 input {
-    
-    max-width: 600px;
+    width: 350px;
     font-size: 18px;
     padding: 10px;
     margin-bottom: 25px;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 10px;
     transition: border-color 0.3s ease;
 }
 
@@ -88,6 +87,8 @@ button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    
+
 }
 
 .div_borda{
@@ -97,3 +98,8 @@ button {
     padding: 50px 100px;
 }
 
+.verificacao{
+
+padding-left: 90px;
+
+}
