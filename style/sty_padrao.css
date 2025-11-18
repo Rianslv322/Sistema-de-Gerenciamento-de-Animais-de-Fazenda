@@ -33,11 +33,14 @@ header {
 
 .perfil-header {
     display: flex;
-    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
     width: 10vw;
 }
 
 .perfil-header > #perfil-img {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
 }
 
