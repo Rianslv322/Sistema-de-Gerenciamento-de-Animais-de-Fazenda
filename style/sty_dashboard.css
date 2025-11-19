@@ -4,3 +4,47 @@
     box-sizing: border-box;
 }
 
+.cards-info-gerais {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cards-info-gerais > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    background-color: aqua;
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.cards-info-gerais > div > h1 {
+    font-size: 1.4em;
+}
+
+.cards-info-gerais > div > p {
+    font-size: 2.8em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#card-animais {
+    background-color: #968c5b;
+}
+
+#card-monitoramento {
+    background-color: #985a37;
+}
+
+#card-vacinas {
+    background-color: #c9af6a;
+}
+
+#card-alimentacao {
+    background-color: #58684d;
+}
