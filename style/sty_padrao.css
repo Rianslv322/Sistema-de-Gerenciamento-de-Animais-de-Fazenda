@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 /* Cabeçalho */
@@ -24,7 +25,6 @@ header {
 .title-header {
     display: flex;
     align-items: center;
-    font-family: sans-serif;
     color: #ffffff;
     padding: 10px 50px;
     width: 80vw;
@@ -105,6 +105,13 @@ header {
 
 /* Conteúdo Principal */
 
+main {
+    display: flex;
+}
+
 .principal {
-    width: 80vw;
+    width: 76vw;
+    height: 85vh;
+    padding: 50px;
+    background-color: #f6f6f6;
 }
