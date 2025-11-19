@@ -40,20 +40,35 @@
 
         <div class="principal">
             <section class="relatorios">
-                <div class="card-relatorio" id="card-status">
+                <div class="card-relatorio" id="card-status" onclick="redirecionarPagina(id)">
                     <p>Status:</p>
                     <img src="img/relatorio_status.png" alt="">
                 </div>
-                <div class="card-relatorio" id="card-alimentacao">
+                <div class="card-relatorio" id="card-alimentacao" onclick="redirecionarPagina(id)">
                     <p>Alimentação:</p>
                     <img src="img/relatorio_alimentacao.png" alt="">
                 </div>
-                <div class="card-relatorio" id="card-saude">
+                <div class="card-relatorio" id="card-saude" onclick="redirecionarPagina(id)">
                     <p>Saúde:</p>
                     <img src="img/relatorio_saude.png" alt="">
                 </div>
             </section>
         </div> 
     </main>
+
+    <script>
+        function redirecionarPagina(page) {
+            console.log(page);
+            if (page == "card-status") {
+                window.location.href = "relatorio_status.html";
+            } else if (page == "card-alimentacao") {
+                window.location.href = "relatorio_alimentacao.html";
+            } else if (page == "card-saude") {
+                window.location.href = "relatorio_saude.html";
+            } else {
+                console.log("Error!");
+            }
+        }
+    </script>
 </body>
 </html>
