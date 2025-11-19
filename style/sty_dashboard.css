@@ -96,7 +96,7 @@
     color: #ff914d;
 }
 
-.status.emdia {
+.status.emdia, .status.regular {
     color: #00bf63;
 }
 
