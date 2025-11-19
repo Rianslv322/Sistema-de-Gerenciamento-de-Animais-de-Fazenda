@@ -39,7 +39,7 @@
         </aside>
 
         <div class="principal">
-            <div class="cards-info-gerais">
+            <section class="cards-info-gerais">
                 <div id="card-animais">
                     <h1>Animais:</h1>
                     <p>50</p>
@@ -56,13 +56,93 @@
                     <h1>Alimentação:</h1>
                     <p>48</p>
                 </div>
-            </div>
+            </section>
 
-            <div class="tabela-monitoramento">
-                <table>
+            <section class="monitoramento">
+                <h2>Animais em Monitoramento: </h2>
 
+                <table class="tabela-monitoramento">
+                    <thead>
+                        <tr>
+                            <th>Nome:</th>
+                            <th>Espécie:</th>
+                            <th>Alimentação:</th>
+                            <th>Vacinação:</th>
+                            <th>Última consulta:</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Bela</td>
+                            <td>Galinha</td>
+                            <td class="status registrar">Registrar+</td>
+                            <td class="status atrasado">Atrasado+</td>
+                            <td class="data-ultima-consulta">28/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Rex</td>
+                            <td>Cachorro</td>
+                            <td class="status emdia">Em dia</td>
+                            <td class="status atrasado">Atrasado</td>
+                            <td class="data-ultima-consulta">29/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Luna</td>
+                            <td>Égua</td>
+                            <td class="status registrar">Registrar+</td>
+                            <td class="status atrasado">Atrasado</td>
+                            <td class="data-ultima-consulta">20/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mimosa</td>
+                            <td>Vaca</td>
+                            <td class="status atrasado">Atrasado</td>
+                            <td class="status atrasado">Atrasado</td>
+                            <td class="data-ultima-consulta">19/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Estrela</td>
+                            <td>Leitoa</td>
+                            <td class="status emdia">Em dia</td>
+                            <td class="status atrasado">Atrasado</td>
+                            <td class="data-ultima-consulta">11/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Milk</td>
+                            <td>Cabrito</td>
+                            <td class="status emdia">Em dia</td>
+                            <td class="status atrasado">Atrasado</td>
+                            <td class="data-ultima-consulta">10/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-            </div>
+            </section>
         </div>
     </main>    
 </body>
