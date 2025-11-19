@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Animais</title>
+    <link rel="stylesheet" href="style/sty_padrao.css">
+    <link rel="stylesheet" href="style/sty_cadastro_animal.css">
+</head>
+<body>
+    <header>
+        <div class="logo-header">
+            <img src="img/logo.png" alt="" id="logo-header-img">
+        </div>
+        <div class="title-header">
+            <h1>Sistema de Gerenciamento de Animais de Fazenda</h1>
+        </div>
+        <div class="perfil-header">
+            <img src="img/perfil.png" alt="" id="perfil-img">
+        </div>
+    </header>
+
+    <main>
+        <aside class="menu-lateral">
+            <div class="icones-menu">
+                <a href="dashboard.html" class="dashboard-menu"><img src="img/dashboard.png" alt=""></a>
+                <a href="" class="cadastro-animal-menu icone-menu-ativo"><img src="img/pata_animal.png" alt=""></a>
+                <a href="saude_animal.html" class="saude-animal-menu"><img src="img/saude_animal.png" alt=""></a>
+                <a href="relatorio_lista.html" class="relatorio-menu"><img src="img/relatorio.png" alt=""></a>
+            </div>
+            <div class="categorias-menu">
+                <a href="dashboard.html" class="dashboard-menu">Dashboard</a>
+                <a href="" class="cadastro-animal-menu categoria-menu-ativa">Cadastro de Animais</a>
+                <a href="saude_animal.html" class="saude-animal-menu">Saúde dos Animais</a>
+                <a href="relatorio_lista.html" class="relatorio-menu">Relatórios</a>
+
+                <p class="info-site">Sistema de Gerenciamento de Animais de Fazenda - @2025</p>
+            </div>
+        </aside>
+
+        <div class="principal">
+            <section class="cadastro-animal">
+                <h2>Cadastro de Animal</h2>
+
+                <form class="form-cadastro" autocomplete="off">
+                    <div class="campo-input">
+                        <div>
+                            <label for="nome">
+                                Nome:
+                                <input type="text" name="nnome" id="nome" required>
+                            </label>
+                            <label for="especie">
+                                Espécie:
+                                <input type="text" name="nespecie" id="especie" required>
+                            </label>
+                            <label for="data-nasc">
+                                Data de Nascimento:
+                                <input type="datetime" name="ndata-nasc" id="data-nasc" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="saude-animal">
+                                Saúde do Animal:
+                                <input type="text" name="nsaude-animal" id="saude-animal" required>
+                            </label>
+                            <label for="historico-vacina">
+                                Histórico de Vacinas:
+                                <input type="text" name="nhistorico-vacina" id="historico-vacina">
+                            </label>
+                            <label for="racao">
+                                Ração:
+                                <input type="text" name="nracao" id="racao" required>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </section>
+        </div> 
+    </main>
+</body>
+</html>
