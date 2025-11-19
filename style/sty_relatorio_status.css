@@ -1,0 +1,152 @@
+/* Campo de Pesquisa */
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 30px;
+}
+
+.campo-pesquisa {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #ffffff;
+    width: 60%;
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: 20px;
+}
+
+.campo-pesquisa input {
+    background-color: #ffffff;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.5em;
+    padding-left: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.campo-pesquisa img {
+    background-color: #ffffff;
+    width: 5%;
+    padding: 5px;
+    cursor: pointer;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+
+/* Relatório de Status */
+
+/* Cards Laterias */
+
+.status-animal {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+}
+
+.lista-animal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 25%;
+}
+
+
+.card-animal {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7f9471;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.info-card h3 {
+    font-size: 1.5em;
+}
+
+.img-card-animal > img {
+    width: 90px;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+}
+
+.destaque-negrito {
+    font-weight: bold;
+}
+
+.card-ativo {
+    background-color: #404e39;
+}
+
+
+/* Informação principal */
+
+.info-animal {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #404e39;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.info-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.informacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.informacoes h3 {
+    font-size: 1.5em;
+}
+
+.imagem-animal > img{
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+}
+
+.info-adicional {
+    text-align: justify;
+}
+
+
+/* Botão - Baixar Relatório */
+
+.baixar-relatorio {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.baixar-relatorio #btn-baixar {
+    background-color: #ff3131;
+    color: #ffffff;
+    width: 50%;
+    height: 50px;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+}
+
+
