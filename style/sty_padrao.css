@@ -105,6 +105,11 @@ header {
 
 /* Conteúdo Principal */
 
+main {
+    display: flex;
+}
+
 .principal {
-    width: 80vw;
+    width: 76vw;
+    padding: 50px;
 }
