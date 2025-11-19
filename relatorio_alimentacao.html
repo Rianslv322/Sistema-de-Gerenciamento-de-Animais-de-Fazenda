@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Relatório - Alimentação</title>
     <link rel="stylesheet" href="style/sty_padrao.css">
-    <link rel="stylesheet" href="Style/sty_dashboard.css">
+    <link rel="stylesheet" href="style/sty_relatorio_alimentacao.css">
 </head>
 <body>
     <header>
@@ -13,83 +13,49 @@
             <img src="img/logo.png" alt="" id="logo-header-img">
         </div>
         <div class="title-header">
-            <h1>Sistema de Gerenciamento de Animais de Fazenda</h1>
+            <h1>Alimentação dos Animais</h1>
         </div>
         <div class="perfil-header">
             <img src="img/perfil.png" alt="" id="perfil-img">
         </div>
     </header>
-    
+
     <main>
         <aside class="menu-lateral">
             <div class="icones-menu">
-                <a href="" class="dashboard-menu icone-menu-ativo"><img src="img/dashboard.png" alt=""></a>
+                <a href="dashboard.html" class="dashboard-menu"><img src="img/dashboard.png" alt=""></a>
                 <a href="cadastro_animal.html" class="cadastro-animal-menu"><img src="img/pata_animal.png" alt=""></a>
                 <a href="saude_animal.html" class="saude-animal-menu"><img src="img/saude_animal.png" alt=""></a>
-                <a href="relatorio_lista.html" class="relatorio-menu"><img src="img/relatorio.png" alt=""></a>
+                <a href="relatorio_lista.html" class="relatorio-menu icone-menu-ativo"><img src="img/relatorio.png" alt=""></a>
             </div>
             <div class="categorias-menu">
-                <a href="" class="dashboard-menu categoria-menu-ativa">Dashboard</a>
+                <a href="dashboard.html" class="dashboard-menu">Dashboard</a>
                 <a href="cadastro_animal.html" class="cadastro-animal-menu">Cadastro de Animais</a>
                 <a href="saude_animal.html" class="saude-animal-menu">Saúde dos Animais</a>
-                <a href="relatorio_lista.html" class="relatorio-menu">Relatórios</a>
+                <a href="relatorio_lista.html" class="relatorio-menu categoria-menu-ativa">Relatórios</a>
 
                 <p class="info-site">Sistema de Gerenciamento de Animais de Fazenda - @2025</p>
             </div>
         </aside>
 
         <div class="principal">
-            <section class="cards-info-gerais">
-                <div id="card-animais">
-                    <h1>Animais:</h1>
-                    <p>50</p>
-                </div>
-                <div id="card-monitoramento">
-                    <h1>Monitoramento:</h1>
-                    <p>9</p>
-                </div>
-                <div id="card-vacinas">
-                    <h1>Vacinas:</h1>
-                    <p>47/50</p>
-                </div>
-                <div id="card-alimentacao">
-                    <h1>Alimentação:</h1>
-                    <p>48</p>
-                </div>
-            </section>
-
-            <section class="monitoramento">
-                <h2>Animais em Monitoramento: </h2>
-
+            <section class="registro">
+                <h2>Tabela de Registro: </h2>
                 <table class="tabela-monitoramento">
                     <thead>
                         <tr>
-                            <th>Nome:</th>
-                            <th>Espécie:</th>
-                            <th>Alimentação:</th>
-                            <th>Vacinação:</th>
-                            <th>Última consulta:</th>
+                            <th>Animal:</th>
+                            <th>Quantidade:</th>
+                            <th>Ração:</th>
+                            <th>Data:</th>
                             <th></th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <tr>
                             <td>Bela</td>
-                            <td>Galinha</td>
-                            <td class="status registrar">Registrar+</td>
-                            <td class="status atrasado">Atrasado+</td>
-                            <td class="data-ultima-consulta">28/10/2025</td>
-                            <td class="btns-acoes">
-                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
-                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Rex</td>
-                            <td>Cachorro</td>
-                            <td class="status emdia">Em dia</td>
-                            <td class="status atrasado">Atrasado</td>
+                            <td>5 kg</td>
+                            <td>Milho</td>
                             <td class="data-ultima-consulta">29/10/2025</td>
                             <td class="btns-acoes">
                                 <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
@@ -97,21 +63,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Luna</td>
-                            <td>Égua</td>
-                            <td class="status registrar">Registrar+</td>
-                            <td class="status atrasado">Atrasado</td>
-                            <td class="data-ultima-consulta">20/10/2025</td>
+                            <td>Rex</td>
+                            <td>2 kg</td>
+                            <td>Ração</td>
+                            <td class="data-ultima-consulta">21/10/2025</td>
                             <td class="btns-acoes">
                                 <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
                                 <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
                             </td>
                         </tr>
                         <tr>
-                            <td>Mimosa</td>
-                            <td>Vaca</td>
-                            <td class="status atrasado">Atrasado</td>
-                            <td class="status atrasado">Atrasado</td>
+                            <td>Luna</td>
+                            <td>23 kg</td>
+                            <td>Feno</td>
                             <td class="data-ultima-consulta">19/10/2025</td>
                             <td class="btns-acoes">
                                 <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
@@ -119,11 +83,20 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>Mimosa</td>
+                            <td>6 kg</td>
+                            <td>Capim</td>
+                            <td class="data-ultima-consulta">21/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Estrela</td>
-                            <td>Leitoa</td>
-                            <td class="status emdia">Em dia</td>
-                            <td class="status atrasado">Atrasado</td>
-                            <td class="data-ultima-consulta">11/10/2025</td>
+                            <td>5 kg</td>
+                            <td>Lavagem</td>
+                            <td class="data-ultima-consulta">21/10/2025</td>
                             <td class="btns-acoes">
                                 <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
                                 <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
@@ -131,10 +104,9 @@
                         </tr>
                         <tr>
                             <td>Milk</td>
-                            <td>Cabrito</td>
-                            <td class="status emdia">Em dia</td>
-                            <td class="status atrasado">Atrasado</td>
-                            <td class="data-ultima-consulta">10/10/2025</td>
+                            <td>3 kg</td>
+                            <td>Aveia</td>
+                            <td class="data-ultima-consulta">21/10/2025</td>
                             <td class="btns-acoes">
                                 <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
                                 <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
@@ -144,6 +116,6 @@
                 </table>
             </section>
         </div>
-    </main>    
+    </main>
 </body>
 </html>

@@ -2,7 +2,6 @@
     background-color: #ffffff;
     border-radius: 10px;
     padding: 10px;
-    margin-top: 25px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.250);
 }
 
@@ -19,33 +18,26 @@
 }
 
 .tabela-monitoramento th {
-    padding: 15px;
-    font-size: 1.7em;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.tabela-monitoramento td.observacoes {
+    font-size: 1em;
+    width: 300px;
 }
 
 .tabela-monitoramento td {
     padding: 10px;
-    font-size: 1.5em;
+    font-size: 1.4em;
 }
 
 .tabela-monitoramento th, td {
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
 
-.status {
-    text-decoration: underline;
-}
-
-.status.registrar {
+.data-ultima-consulta {
     color: #ff914d;
-}
-
-.status.emdia, .status.regular {
-    color: #00bf63;
-}
-
-.status.atrasado {
-    color: #ff3131;
 }
 
 .btn-excluir, .btn-editar {

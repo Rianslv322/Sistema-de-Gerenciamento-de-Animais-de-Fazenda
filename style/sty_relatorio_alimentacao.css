@@ -32,20 +32,8 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
 
-.status {
-    text-decoration: underline;
-}
-
-.status.registrar {
+.data-ultima-consulta {
     color: #ff914d;
-}
-
-.status.emdia, .status.regular {
-    color: #00bf63;
-}
-
-.status.atrasado {
-    color: #ff3131;
 }
 
 .btn-excluir, .btn-editar {

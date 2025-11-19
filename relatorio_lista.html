@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório - Lista</title>
+    <link rel="stylesheet" href="style/sty_padrao.css">
+    <link rel="stylesheet" href="style/sty_relatorio_lista.css">
+</head>
+<body>
+    <header>
+        <div class="logo-header">
+            <img src="img/logo.png" alt="" id="logo-header-img">
+        </div>
+        <div class="title-header">
+            <h1>Sistema de Gerenciamento de Animais de Fazenda</h1>
+        </div>
+        <div class="perfil-header">
+            <img src="img/perfil.png" alt="" id="perfil-img">
+        </div>
+    </header>
+
+    <main>
+        <aside class="menu-lateral">
+            <div class="icones-menu">
+                <a href="dashboard.html" class="dashboard-menu"><img src="img/dashboard.png" alt=""></a>
+                <a href="cadastro_animal.html" class="cadastro-animal-menu"><img src="img/pata_animal.png" alt=""></a>
+                <a href="saude_animal.html" class="saude-animal-menu"><img src="img/saude_animal.png" alt=""></a>
+                <a href="" class="relatorio-menu icone-menu-ativo"><img src="img/relatorio.png" alt=""></a>
+            </div>
+            <div class="categorias-menu">
+                <a href="dashboard.html" class="dashboard-menu">Dashboard</a>
+                <a href="cadastro_animal.html" class="cadastro-animal-menu">Cadastro de Animais</a>
+                <a href="saude_animal.html" class="saude-animal-menu">Saúde dos Animais</a>
+                <a href="" class="relatorio-menu categoria-menu-ativa">Relatórios</a>
+
+                <p class="info-site">Sistema de Gerenciamento de Animais de Fazenda - @2025</p>
+            </div>
+        </aside>
+
+        <div class="principal">
+            <section class="relatorios">
+                <div class="card-relatorio" id="card-status" onclick="redirecionarPagina(id)">
+                    <p>Status:</p>
+                    <img src="img/relatorio_status.png" alt="">
+                </div>
+                <div class="card-relatorio" id="card-alimentacao" onclick="redirecionarPagina(id)">
+                    <p>Alimentação:</p>
+                    <img src="img/relatorio_alimentacao.png" alt="">
+                </div>
+                <div class="card-relatorio" id="card-saude" onclick="redirecionarPagina(id)">
+                    <p>Saúde:</p>
+                    <img src="img/relatorio_saude.png" alt="">
+                </div>
+            </section>
+        </div> 
+    </main>
+
+    <script>
+        function redirecionarPagina(page) {
+            console.log(page);
+            if (page == "card-status") {
+                window.location.href = "relatorio_status.html";
+            } else if (page == "card-alimentacao") {
+                window.location.href = "relatorio_alimentacao.html";
+            } else if (page == "card-saude") {
+                window.location.href = "relatorio_saude.html";
+            } else {
+                console.log("Error!");
+            }
+        }
+    </script>
+</body>
+</html>

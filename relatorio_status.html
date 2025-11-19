@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório - Status</title>
+    <link rel="stylesheet" href="style/sty_padrao.css">
+    <link rel="stylesheet" href="style/sty_relatorio_status.css">
+</head>
+<body>
+    <header>
+        <div class="logo-header">
+            <img src="img/logo.png" alt="" id="logo-header-img">
+        </div>
+        <div class="title-header">
+            <h1>Status dos Animais</h1>
+        </div>
+        <div class="perfil-header">
+            <img src="img/perfil.png" alt="" id="perfil-img">
+        </div>
+    </header>
+
+    <main>
+        <aside class="menu-lateral">
+            <div class="icones-menu">
+                <a href="dashboard.html" class="dashboard-menu"><img src="img/dashboard.png" alt=""></a>
+                <a href="cadastro_animal.html" class="cadastro-animal-menu"><img src="img/pata_animal.png" alt=""></a>
+                <a href="saude_animal.html" class="saude-animal-menu"><img src="img/saude_animal.png" alt=""></a>
+                <a href="relatorio_lista.html" class="relatorio-menu icone-menu-ativo"><img src="img/relatorio.png" alt=""></a>
+            </div>
+            <div class="categorias-menu">
+                <a href="dashboard.html" class="dashboard-menu">Dashboard</a>
+                <a href="cadastro_animal.html" class="cadastro-animal-menu">Cadastro de Animais</a>
+                <a href="saude_animal.html" class="saude-animal-menu">Saúde dos Animais</a>
+                <a href="relatorio_lista.html" class="relatorio-menu categoria-menu-ativa">Relatórios</a>
+
+                <p class="info-site">Sistema de Gerenciamento de Animais de Fazenda - @2025</p>
+            </div>
+        </aside>
+
+        <div class="principal">
+            <section class="campo-pesquisa">
+                <input type="text" name="pesquisa" id="pesquisa">
+                <img src="img/lupa_nova.png" alt="">
+            </section>
+
+            <section class="status-animal">
+                <div class="lista-animal">
+                    <div class="card-animal card-ativo">
+                        <div class="info-card">
+                            <h3>Mimosa</h3>
+                            <p id="especie"><span class="destaque-negrito">Espécie:</span> Vaca</p>
+                            <p id="ident"><span class="destaque-negrito">ID:</span> 000-abc</p>
+                        </div>
+
+                        <div class="img-card-animal">
+                            <img src="img/foto_mimosa.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="card-animal">
+                        <div class="info-card">
+                            <h3>Milk</h3>
+                            <p id="especie"><span class="destaque-negrito">Espécie:</span> Cabrito</p>
+                            <p id="ident"><span class="destaque-negrito">ID:</span> 001-abc</p>
+                        </div>
+
+                        <div class="img-card-animal">
+                            <img src="img/foto_milk.png" alt="">
+                        </div>
+                    </div>
+                    
+                    <div class="card-animal">
+                        <div class="info-card">
+                            <h3>Luna</h3>
+                            <p id="especie"><span class="destaque-negrito">Espécie:</span> Égua</p>
+                            <p id="ident"><span class="destaque-negrito">ID:</span> 002-abc</p>
+                        </div>
+
+                        <div class="img-card-animal">
+                            <img src="img/foto_luna.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="card-animal">
+                        <div class="info-card">
+                            <h3>Estrela</h3>
+                            <p id="especie"><span class="destaque-negrito">Espécie:</span> Leitoa</p>
+                            <p id="ident"><span class="destaque-negrito">ID:</span> 003-abc</p>
+                        </div>
+
+                        <div class="img-card-animal">
+                            <img src="img/foto_estrela.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="card-animal">
+                        <div class="info-card">
+                            <h3>Rex</h3>
+                            <p id="especie"><span class="destaque-negrito">Espécie:</span> Cachorro</p>
+                            <p id="ident"><span class="destaque-negrito">ID:</span> 004-abc</p>
+                        </div>
+
+                        <div class="img-card-animal">
+                            <img src="img/foto_rex.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-animal">
+                    <div class="info-principal">
+                        <div class="informacoes">
+                            <h3>Mimosa</h3>
+                            <p id="especie"><span class="destaque-negrito">Espécie:</span> Vaca</p>
+                            <p id="ident"><span class="destaque-negrito">ID:</span> 000-abc</p>
+                            <br>
+                            <p id="peso"><span class="destaque-negrito">Peso:</span> 120kg</p>
+                            <p id="racao"><span class="destaque-negrito">Ração:</span> capim</p>
+                            <p id="qntdd-diaria"><span class="destaque-negrito">Qntdd diária:</span> 6kg</p>
+                            <p id="data_nasc"><span class="destaque-negrito">Data Nasc.:</span> 28/02/2023</p>
+                        </div>
+
+                        <div class="imagem-animal">
+                            <img src="img/foto_mimosa.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="info-adicional">
+                        <p id="observacao"><span class="destaque-negrito">Observações:</span> Tem alergia à rações comuns. Desde novinha ela só consumiu leite da mãe, e quando maior, apenas capim. Quando consumia qualquer outro tipo de ração, apresentava problemas de saúde.</p>
+                        <br>
+                        <p id="vacinacao"><span class="destaque-negrito">Vacinações:</span> Vacinada atualmente contra HPV, Hepatite A e C. Porém, com vacina de gripe atrasada.</p>
+                    </div>
+
+                    <div class="baixar-relatorio">
+                        <button id="btn-baixar">Baixar relatório</button>
+                    </div>
+                </div>
+            </section>
+        </div> 
+    </main>
+</body>
+</html>
