@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório - Alimentação</title>
+    <link rel="stylesheet" href="style/sty_padrao.css">
+    <link rel="stylesheet" href="style/sty_relatorio_alimentacao.css">
+</head>
+<body>
+    <header>
+        <div class="logo-header">
+            <img src="img/logo.png" alt="" id="logo-header-img">
+        </div>
+        <div class="title-header">
+            <h1>Alimentação dos Animais</h1>
+        </div>
+        <div class="perfil-header">
+            <img src="img/perfil.png" alt="" id="perfil-img">
+        </div>
+    </header>
+
+    <main>
+        <aside class="menu-lateral">
+            <div class="icones-menu">
+                <a href="dashboard.html" class="dashboard-menu"><img src="img/dashboard.png" alt=""></a>
+                <a href="cadastro_animal.html" class="cadastro-animal-menu"><img src="img/pata_animal.png" alt=""></a>
+                <a href="saude_animal.html" class="saude-animal-menu"><img src="img/saude_animal.png" alt=""></a>
+                <a href="relatorio_lista.html" class="relatorio-menu icone-menu-ativo"><img src="img/relatorio.png" alt=""></a>
+            </div>
+            <div class="categorias-menu">
+                <a href="dashboard.html" class="dashboard-menu">Dashboard</a>
+                <a href="cadastro_animal.html" class="cadastro-animal-menu">Cadastro de Animais</a>
+                <a href="saude_animal.html" class="saude-animal-menu">Saúde dos Animais</a>
+                <a href="relatorio_lista.html" class="relatorio-menu categoria-menu-ativa">Relatórios</a>
+
+                <p class="info-site">Sistema de Gerenciamento de Animais de Fazenda - @2025</p>
+            </div>
+        </aside>
+
+        <div class="principal">
+            <section class="registro">
+                <h2>Tabela de Registro: </h2>
+                <table class="tabela-monitoramento">
+                    <thead>
+                        <tr>
+                            <th>Animal:</th>
+                            <th>Quantidade:</th>
+                            <th>Ração:</th>
+                            <th>Data:</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bela</td>
+                            <td>5 kg</td>
+                            <td>Milho</td>
+                            <td class="data-ultima-consulta">29/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Rex</td>
+                            <td>2 kg</td>
+                            <td>Ração</td>
+                            <td class="data-ultima-consulta">21/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Luna</td>
+                            <td>23 kg</td>
+                            <td>Feno</td>
+                            <td class="data-ultima-consulta">19/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mimosa</td>
+                            <td>6 kg</td>
+                            <td>Capim</td>
+                            <td class="data-ultima-consulta">21/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Estrela</td>
+                            <td>5 kg</td>
+                            <td>Lavagem</td>
+                            <td class="data-ultima-consulta">21/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Milk</td>
+                            <td>3 kg</td>
+                            <td>Aveia</td>
+                            <td class="data-ultima-consulta">21/10/2025</td>
+                            <td class="btns-acoes">
+                                <button class="btn-excluir"><img src="img/icone_excluir.png" alt=""></button>
+                                <button class="btn-editar"><img src="img/icone_editar.png" alt=""></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
