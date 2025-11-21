@@ -31,27 +31,25 @@
     </div>
 
     <script>
-        const emeilprincipal = "riansilvasouza915@gmail.com"
-        const senhaprincipal = "rian123#"
+    const emeilprincipal = "riansilvasouza915@gmail.com";
+    const senhaprincipal = "rian123#";
 
-        const formulario = document.getElementsByClassName("entrar")
+    const formulario = document.querySelector(".entrar");
 
-        formulario.addEventListener("submit", function(event)
-    {
+    formulario.addEventListener("submit", function(event) {
+        event.preventDefault(); 
 
         const emaildigitada = document.getElementById("email").value;
-        const senhadigitada = document.getElementById("senha")
+        const senhadigitada = document.getElementById("senha").value;
 
-
-        if( emeilprincipal === emaildigitada && senhaprincipal == senhadigitada){
-            window.location.href = "dashboard";
+        if(emeilprincipal === emaildigitada && senhaprincipal === senhadigitada){
+            window.location.href = "dashboard.html"; 
+        } else {
+            alert("Email ou senha incorretos");
         }
+    });
+</script>
 
-        else{
-            alert("Email ou senha incorreto")
-        }
-        
-    })
         
         
     </script>
