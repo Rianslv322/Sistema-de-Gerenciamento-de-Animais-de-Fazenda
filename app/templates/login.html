@@ -13,7 +13,7 @@
         </div>
 
         <div class="login">
-            <form action="#">
+            <form class="entrar" action="dashboard.html">
                 <div class="div_borda">
                     <h1>Login</h1>
                     
@@ -29,5 +29,29 @@
             </form>
         </div>
     </div>
+
+    <script>
+    const emeilprincipal = "riansilvasouza915@gmail.com";
+    const senhaprincipal = "rian123#";
+
+    const formulario = document.querySelector(".entrar");
+
+    formulario.addEventListener("submit", function(event) {
+        event.preventDefault(); 
+
+        const emaildigitada = document.getElementById("email").value;
+        const senhadigitada = document.getElementById("senha").value;
+
+        if(emeilprincipal === emaildigitada && senhaprincipal === senhadigitada){
+            window.location.href = "dashboard.html"; 
+        } else {
+            alert("Email ou senha incorretos");
+        }
+    });
+</script>
+
+        
+        
+    </script>
 </body>
 </html>
