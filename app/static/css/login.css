@@ -79,7 +79,9 @@ input:focus {
     outline: none;
 }
 
-button {
+.btnSubmit {
+    display: block;
+    width: 370px;
     font-size: 20px;
     padding: 12px 40px;
     background-color: #5C6A51;
@@ -87,19 +89,15 @@ button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    
-
 }
 
-.div_borda{
+.div_borda {
     border-radius: 10px;
     box-shadow: 3px 3px 8px   black;
     background-color: white;
     padding: 50px 100px;
 }
 
-.verificacao{
-
-padding-left: 90px;
-
+.cadastrar {
+    padding-left: 90px;
 }

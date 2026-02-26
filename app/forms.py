@@ -5,6 +5,22 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from app import db, bcrypt
 from app.models import Usuario
 
+class LoginForm(FlaskForm):
+    email = StringField('Email:', validators=[DataRequired(), Email()])
+    senha = PasswordField('Senha:', validators=[DataRequired()])
+    btnSubmit = SubmitField('Entrar')
+
+    def login(self):
+        user = Usuario.query.filter_by(email=self.email.data).first()
+
+        if (user):
+            if (bcrypt.check_password_hash(user.senha, self.senha.data.encode('utf-8'))):
+                return user
+            else:
+                raise Exception('Senha incorreta!')
+        else:
+            raise Exception('Usuário não encontrado!')
+
 class UsuarioForm(FlaskForm):
     nome = StringField('Nome Completo/Razão Social:', validators=[DataRequired()])
     documento = StringField('CPF/CNPJ:', validators=[DataRequired()])

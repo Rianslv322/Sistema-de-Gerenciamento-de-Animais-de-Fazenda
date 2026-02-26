@@ -2,7 +2,7 @@ from app import app
 from flask import render_template, url_for, request, redirect
 from flask_login import login_user, logout_user, current_user
 
-from app.forms import UsuarioForm
+from app.forms import UsuarioForm, LoginForm
 
 @app.route('/')
 def home():
@@ -16,9 +16,19 @@ def cadastro():
         return redirect(url_for('login'))
     return render_template('cadastro.html', form=form)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = form.login()
+        login_user(user, remember=True)
+        return redirect(url_for('dashboard'))
+    return render_template('login.html', form=form)
+
+@app.route('/sair')
+def sair():
+    logout_user()
+    return redirect(url_for('login'))
 
 @app.route('/dashboard')
 def dashboard():
