@@ -13,18 +13,20 @@
         </div>
 
         <div class="login">
-            <form class="entrar" action="">
+            <form class="entrar" action="" method="POST">
                 <div class="div_borda">
                     <h1>Login</h1>
-                    
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email"><br>
-                    
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha"><br>
+                    {{ form.csrf_token }}
 
-                    <button type="submit">Entrar</button>
-                    <a href="#" class="verificacao">Esqueci a senha</a>
+                    {{ form.email.label() }}
+                    {{ form.email() }}
+
+                    {{ form.senha.label() }}
+                    {{ form.senha() }}
+
+                    {{ form.btnSubmit(class='btnSubmit') }}
+                    
+                    <a href="{{ url_for('cadastro') }}" class="cadastrar">Não tem cadastro?</a>
                 </div>
             </form>
         </div>

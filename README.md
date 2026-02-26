@@ -1,4 +1,9 @@
 # Projeto Sistema de Gerenciamento de Animais de Fazenda
 
 ## Packs instalados
-flask flask-sqlalchemy 
+flask 
+flask-sqlalchemy 
+flask-login
+flask-bcrypt
+flask-wtf
+email-validator
