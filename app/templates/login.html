@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="Style/style_login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
 </head>
 <body>
     <div class="menu">
         <div class="img">
-            <img class="foto_animal" src="img/logo.png" alt="Imagem de Login">
+            <img class="foto_animal" src="{{ url_for('static', filename='img/logo.png') }}" alt="Imagem de Login">
         </div>
 
         <div class="login">
-            <form class="entrar" action="dashboard.html">
+            <form class="entrar" action="">
                 <div class="div_borda">
                     <h1>Login</h1>
                     
@@ -29,29 +29,5 @@
             </form>
         </div>
     </div>
-
-    <script>
-    const emeilprincipal = "riansilvasouza915@gmail.com";
-    const senhaprincipal = "rian123#";
-
-    const formulario = document.querySelector(".entrar");
-
-    formulario.addEventListener("submit", function(event) {
-        event.preventDefault(); 
-
-        const emaildigitada = document.getElementById("email").value;
-        const senhadigitada = document.getElementById("senha").value;
-
-        if(emeilprincipal === emaildigitada && senhaprincipal === senhadigitada){
-            window.location.href = "dashboard.html"; 
-        } else {
-            alert("Email ou senha incorretos");
-        }
-    });
-</script>
-
-        
-        
-    </script>
 </body>
 </html>
