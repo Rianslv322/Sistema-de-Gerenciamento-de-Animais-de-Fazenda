@@ -13,6 +13,15 @@ def login():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/base')
-def base():
-    return render_template('base.html')
+@app.route('/cadastro-animal')
+def cadastro_animal():
+    return render_template('cadastro_animal.html')
+
+@app.route('/saude-animal')
+def saude_animal():
+    return render_template('saude_animal.html')
+
+@app.route('/relatorio')
+def relatorio():
+    return render_template('relatorio.html')
+
