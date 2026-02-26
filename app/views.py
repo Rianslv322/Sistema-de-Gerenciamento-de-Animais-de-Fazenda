@@ -25,3 +25,14 @@ def saude_animal():
 def relatorio():
     return render_template('relatorio.html')
 
+@app.route('/relatorio-status')
+def relatorio_status():
+    return render_template('relatorio_status.html')
+
+@app.route('/relatorio-alimentacao')
+def relatorio_alimentacao():
+    return render_template('relatorio_alimentacao.html')
+
+@app.route('/relatorio-saude')
+def relatorio_saude():
+    return render_template('relatorio_saude.html')

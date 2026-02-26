@@ -6,18 +6,24 @@
 
 {% block content %}
     <section class="relatorios">
-        <div class="card-relatorio" id="card-status" onclick="redirecionarPagina(id)">
-            <p>Status:</p>
-            <img src="{{ url_for('static', filename='img/relatorio_status.png') }}" alt="">
-        </div>
-        <div class="card-relatorio" id="card-alimentacao" onclick="redirecionarPagina(id)">
-            <p>Alimentação:</p>
-            <img src="{{ url_for('static', filename='img/relatorio_alimentacao.png') }}" alt="">
-        </div>
-        <div class="card-relatorio" id="card-saude" onclick="redirecionarPagina(id)">
-            <p>Saúde:</p>
-            <img src="{{ url_for('static', filename='img/relatorio_saude.png') }}" alt="">
-        </div>
+        <a href="{{ url_for('relatorio_status') }}" style="text-decoration: none;">
+            <div class="card-relatorio" id="card-status">
+                <p>Status:</p>
+                <img src="{{ url_for('static', filename='img/relatorio_status.png') }}" alt="">
+            </div>
+        </a>
+        <a href="{{ url_for('relatorio_alimentacao') }}" style="text-decoration: none;">
+            <div class="card-relatorio" id="card-alimentacao">
+                <p>Alimentação:</p>
+                <img src="{{ url_for('static', filename='img/relatorio_alimentacao.png') }}" alt="">
+            </div>
+        </a>
+        <a href="{{ url_for('relatorio_saude') }}" style="text-decoration: none;">
+            <div class="card-relatorio" id="card-saude">
+                <p>Saúde:</p>
+                <img src="{{ url_for('static', filename='img/relatorio_saude.png') }}" alt="">
+            </div>
+        </a>
     </section>
 {% endblock %}
             

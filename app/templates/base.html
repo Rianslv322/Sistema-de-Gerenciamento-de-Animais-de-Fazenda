@@ -13,7 +13,7 @@
             <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" id="logo-header-img">
         </div>
         <div class="title-header">
-            <h1>Sistema de Gerenciamento de Animais de Fazenda</h1>
+            <h1>{% block header %} Sistema de Gerenciamento de Animais de Fazenda {% endblock %}</h1>
         </div>
         <div class="perfil-header">
             <img src="{{ url_for('static', filename='img/perfil.png') }}" alt="" id="perfil-img">
