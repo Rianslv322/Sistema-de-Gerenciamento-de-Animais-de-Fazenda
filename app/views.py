@@ -6,7 +6,9 @@ from app.forms import UsuarioForm, LoginForm
 
 @app.route('/')
 def home():
-    pass
+    if (current_user.is_authenticated):
+        return redirect(url_for('dashboard'))
+    return redirect(url_for('login'))
 
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():

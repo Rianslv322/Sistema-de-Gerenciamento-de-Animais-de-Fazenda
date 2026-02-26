@@ -17,6 +17,10 @@
         </div>
         <div class="perfil-header">
             <img src="{{ url_for('static', filename='img/perfil.png') }}" alt="" id="perfil-img">
+            <h1>{{ current_user.primeiro_nome() }}</h1>
+        </div>
+        <div class="sair-header">
+            <a href="{{ url_for('sair') }}"><img src="{{ url_for('static', filename='img/icone_sair.png') }}" alt="" id="icone-sair-img"></a>
         </div>
     </header>
 

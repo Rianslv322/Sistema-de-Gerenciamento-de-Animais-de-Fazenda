@@ -12,3 +12,6 @@ class Usuario(db.Model, UserMixin):
     cep = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
     senha = db.Column(db.String(255), nullable=False)
+
+    def primeiro_nome(self):
+        return self.nome.split()[0]
