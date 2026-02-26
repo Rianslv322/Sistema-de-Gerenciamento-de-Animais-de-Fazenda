@@ -1,13 +1,20 @@
 from app import app
-from flask import render_template, url_for
+from flask import render_template, url_for, request, redirect
+from flask_login import login_user, logout_user, current_user
+
+from app.forms import UsuarioForm
 
 @app.route('/')
 def home():
     pass
 
-@app.route('/cadastro')
+@app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
-    return render_template('cadastro.html')
+    form = UsuarioForm()
+    if form.validate_on_submit():
+        form.save()
+        return redirect(url_for('login'))
+    return render_template('cadastro.html', form=form)
 
 @app.route('/login')
 def login():

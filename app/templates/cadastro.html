@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,25 +13,27 @@
         </div>
 
         <div class="login">
-            <form action="#">
+            <form action="" method="POST">
                 <div class="div_borda">
                     <h1>CADASTRO</h1>
-                    <label for="nome">Nome Completo ou Razão Social:</label>
-                    <input  id="nome" name="nome" required><br>
+                    {{ form.csrf_token }}
+
+                    {{ form.nome.label() }}
+                    {{ form.nome() }}
                     
-                    <label for="dados">CPF/CNPJ:</label>
-                    <input  id="dados" required><br>
-                    
-                    <label for="cep">CEP:</label>
-                    <input  id="cep" required><br>
+                    {{ form.documento.label() }}
+                    {{ form.documento() }}
 
-                    <label for="email">Email:</label>
-                    <input  id="email" required><br>
+                    {{ form.cep.label() }}
+                    {{ form.cep() }}
 
-                    <label for="senha">Senha:</label>
-                    <input  id="cep" required><br>
+                    {{ form.email.label() }}
+                    {{ form.email() }}
 
-                    <button type="submit">Entrar</button>
+                    {{ form.senha.label() }}
+                    {{ form.senha() }}
+
+                    {{ form.btnSubmit(class='btnSubmit') }}
                 </div>
             </form>
         </div>
