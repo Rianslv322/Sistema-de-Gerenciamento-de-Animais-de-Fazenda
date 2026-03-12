@@ -2,8 +2,8 @@ from app import app, db
 from flask import render_template, url_for, request, redirect
 from flask_login import login_user, logout_user, current_user, login_required
 
-from app.models import Animal, Alimentacao
-from app.forms import UsuarioForm, LoginForm, AnimalForm, AlimentacaoForm
+from app.models import Animal, Alimentacao, Saude
+from app.forms import UsuarioForm, LoginForm, AnimalForm, AlimentacaoForm, SaudeForm
 
 @app.route('/')
 def home():
@@ -128,10 +128,51 @@ def excluir_alimentacao(id):
     return redirect(url_for('alimentacao'))
 
 # Rotas - Saúdes
-@app.route('/saude')
+@app.route('/saude', methods=['GET', 'POST'])
 @login_required
 def saude():
-    return render_template('saude.html')
+    saudes = Saude.query.join(Animal).filter(Animal.usuario_id == current_user.id).all()
+    return render_template('saude.html', saudes=saudes)
+
+@app.route('/cadastro-saude', methods=['GET', 'POST'])
+@login_required
+def cadastro_saude():
+    form = SaudeForm()
+    animais = Animal.query.filter_by(usuario_id=current_user.id).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
+
+    if form.validate_on_submit():
+        form.save()
+        return redirect(url_for('saude'))
+
+    return render_template('cadastro_saude.html', form=form)
+
+@app.route('/editar-saude/<int:id>', methods=['GET', 'POST'])
+@login_required
+def editar_saude(id):
+    saude = Saude.query.get_or_404(id)
+
+    form = SaudeForm(obj=saude)
+    animais = Animal.query.filter_by(usuario_id=current_user.id).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
+
+    if form.validate_on_submit():
+        form.populate_obj(saude)
+
+        db.session.commit()
+
+        return redirect(url_for('saude'))
+    return render_template('cadastro_saude.html', form=form)
+
+@app.route('/excluir-saude/<int:id>')
+@login_required
+def excluir_saude(id):
+    saude = Saude.query.get_or_404(id)
+
+    db.session.delete(saude)
+    db.session.commit()
+
+    return redirect(url_for('saude'))
 
 # Rotas - Vacinas
 @app.route('/vacinas')

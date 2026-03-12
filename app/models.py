@@ -30,6 +30,7 @@ class Animal(db.Model):
     usuario_id = db.Column(db.Integer, db.ForeignKey("usuario.id"), nullable=False)
 
     alimentacoes = db.relationship("Alimentacao", back_populates="animal", lazy=True)
+    saudes = db.relationship("Saude", back_populates="animal", lazy=True)
 
     @property
     def idade(self):
@@ -55,3 +56,14 @@ class Alimentacao(db.Model):
     animal_id = db.Column(db.Integer, db.ForeignKey("animal.id"), nullable=False)
 
     animal = db.relationship("Animal", back_populates="alimentacoes", lazy=True)
+
+class Saude(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    doenca_condicao = db.Column(db.String(100), nullable=False) 
+    tratamento = db.Column(db.String(100), nullable=False) 
+    ultima_consulta = db.Column(db.Date)
+    observacoes = db.Column(db.Text)
+    animal_id = db.Column(db.Integer, db.ForeignKey("animal.id"), nullable=False)
+
+    animal = db.relationship("Animal", back_populates="saudes", lazy=True)
+

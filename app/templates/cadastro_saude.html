@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} Cadastro - Saúde {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro_saude.css') }}"> {% endblock %}
+
+{% block content %}
+    <section class="cadastro">
+        <h2>Cadastro de Saúde</h2>
+
+        <form class="form-cadastro" autocomplete="off" method="POST">
+            {{ form.csrf_token }}
+            <div class="campo-input">
+                <div>
+                    {{ form.animal_id.label() }}
+                    {{ form.animal_id(class='select-input') }}
+                    {{ form.doenca_condicao.label() }}
+                    {{ form.doenca_condicao() }}
+                </div>
+                <div>
+                    {{ form.tratamento.label() }}
+                    {{ form.tratamento() }}
+                    {{ form.ultima_consulta.label() }}
+                    {{ form.ultima_consulta() }}
+                </div>
+            </div>
+            <div class="observacao">
+                {{ form.observacoes.label() }}
+                {{ form.observacoes(class='text-area-input') }}
+            </div>
+            {{ form.btnSubmit(class='btnSubmit') }}
+        </form>
+    </section>
+{% endblock %}
+            

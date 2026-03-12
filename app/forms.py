@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Email, ValidationError, Optional
 from flask_login import current_user
 
 from app import db, bcrypt
-from app.models import Usuario, Animal, Alimentacao
+from app.models import Usuario, Animal, Alimentacao, Saude
 
 class LoginForm(FlaskForm):
     email = StringField('Email:', validators=[DataRequired(), Email()])
@@ -100,3 +100,22 @@ class AlimentacaoForm(FlaskForm):
         db.session.add(alimentacao)
         db.session.commit()
 
+class SaudeForm(FlaskForm):
+    animal_id = SelectField("Animal:", coerce=int, validators=[DataRequired()])
+    doenca_condicao = StringField("Doença/Condição:", validators=[DataRequired()])
+    tratamento = StringField("Tratamento:", validators=[DataRequired()])
+    ultima_consulta = DateField("Data da consulta:")
+    observacoes = TextAreaField("Observações:")
+    btnSubmit = SubmitField("Cadastrar Saúde")
+
+    def save(self):
+        saude = Saude(
+            animal_id = self.animal_id.data,
+            doenca_condicao = self.doenca_condicao.data,
+            tratamento = self.tratamento.data,
+            ultima_consulta = self.ultima_consulta.data,
+            observacoes = self.observacoes.data
+        )
+
+        db.session.add(saude)
+        db.session.commit()
