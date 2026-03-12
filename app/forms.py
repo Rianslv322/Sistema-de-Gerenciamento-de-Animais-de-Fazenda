@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField, TextAreaField, DateField, FloatField
+from wtforms import StringField, PasswordField, SubmitField, SelectField, TextAreaField, DateField, FloatField, DateTimeLocalField
 from wtforms.validators import DataRequired, Email, ValidationError, Optional
 from flask_login import current_user
 
 from app import db, bcrypt
-from app.models import Usuario, Animal
+from app.models import Usuario, Animal, Alimentacao
 
 class LoginForm(FlaskForm):
     email = StringField('Email:', validators=[DataRequired(), Email()])
@@ -81,3 +81,22 @@ class AnimalForm(FlaskForm):
 
         db.session.add(animal)
         db.session.commit()
+
+class AlimentacaoForm(FlaskForm):
+    animal_id = SelectField("Animal:", coerce=int, validators=[DataRequired()])
+    tipo_racao = StringField("Tipo de ração:", validators=[DataRequired()])
+    quantidade = FloatField("Quantidade (kg):", validators=[DataRequired()])
+    data_hora = DateTimeLocalField("Data e hora da alimentação:", format="%Y-%m-%dT%H:%M", validators=[DataRequired()])
+    btnSubmit = SubmitField("Cadastrar Alimentação")
+
+    def save(self):
+        alimentacao = Alimentacao(
+            animal_id = self.animal_id.data,
+            tipo_racao = self.tipo_racao.data,
+            quantidade = self.quantidade.data,
+            data_hora = self.data_hora.data
+        )
+
+        db.session.add(alimentacao)
+        db.session.commit()
+

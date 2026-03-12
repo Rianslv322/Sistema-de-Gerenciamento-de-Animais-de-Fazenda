@@ -2,8 +2,8 @@ from app import app, db
 from flask import render_template, url_for, request, redirect
 from flask_login import login_user, logout_user, current_user, login_required
 
-from app.models import Animal
-from app.forms import UsuarioForm, LoginForm, AnimalForm
+from app.models import Animal, Alimentacao
+from app.forms import UsuarioForm, LoginForm, AnimalForm, AlimentacaoForm
 
 @app.route('/')
 def home():
@@ -38,6 +38,8 @@ def sair():
 def dashboard():
     return render_template('dashboard.html')
 
+
+# Rotas - Animais
 @app.route('/animal', methods=['GET', 'POST'])
 @login_required
 def animal():
@@ -78,21 +80,66 @@ def excluir_animal(id):
 
     return redirect(url_for('animal'))
 
-@app.route('/alimentacao')
+# Rotas - Alimentação
+@app.route('/alimentacao', methods=['GET', 'POST'])
 @login_required
 def alimentacao():
-    return render_template('alimentacao.html')
+    alimentacoes = Alimentacao.query.join(Animal).filter(Animal.usuario_id == current_user.id).all()
+    return render_template('alimentacao.html', alimentacoes=alimentacoes)
 
+@app.route('/cadastro-alimentacao', methods=['GET', 'POST'])
+@login_required
+def cadastro_alimentacao():
+    form = AlimentacaoForm()
+    animais = Animal.query.filter_by(usuario_id=current_user.id).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
+
+    if form.validate_on_submit():
+        form.save()
+        return redirect(url_for('alimentacao'))
+
+    return render_template('cadastro_alimentacao.html', form=form)
+
+@app.route('/editar-alimentacao/<int:id>', methods=['GET', 'POST'])
+@login_required
+def editar_alimentacao(id):
+    alimentacao = Alimentacao.query.get_or_404(id)
+
+    form = AlimentacaoForm(obj=alimentacao)
+    animais = Animal.query.filter_by(usuario_id=current_user.id).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
+
+    if form.validate_on_submit():
+        form.populate_obj(alimentacao)
+
+        db.session.commit()
+
+        return redirect(url_for('alimentacao'))
+    return render_template('cadastro_alimentacao.html', form=form)
+
+@app.route('/excluir-alimentacao/<int:id>')
+@login_required
+def excluir_alimentacao(id):
+    alimentacao = Alimentacao.query.get_or_404(id)
+
+    db.session.delete(alimentacao)
+    db.session.commit()
+
+    return redirect(url_for('alimentacao'))
+
+# Rotas - Saúdes
 @app.route('/saude')
 @login_required
 def saude():
     return render_template('saude.html')
 
+# Rotas - Vacinas
 @app.route('/vacinas')
 @login_required
 def vacinas():
     return render_template('vacinas.html')
 
+# Rotas - Relatório
 @app.route('/relatorio')
 @login_required
 def relatorio():

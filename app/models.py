@@ -1,6 +1,6 @@
 from app import db, login_manager
 from flask_login import UserMixin
-from datetime import date
+from datetime import date, datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -27,8 +27,9 @@ class Animal(db.Model):
     data_nascimento = db.Column(db.Date, nullable=False)
     peso = db.Column(db.Float)
     observacoes = db.Column(db.Text)
-
     usuario_id = db.Column(db.Integer, db.ForeignKey("usuario.id"), nullable=False)
+
+    alimentacoes = db.relationship("Alimentacao", back_populates="animal", lazy=True)
 
     @property
     def idade(self):
@@ -45,3 +46,12 @@ class Animal(db.Model):
             meses += 12
 
         return f"{anos} anos e {meses} meses"
+
+class Alimentacao(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    tipo_racao = db.Column(db.String(100), nullable=False)    
+    quantidade = db.Column(db.Float, nullable=False)
+    data_hora = db.Column(db.DateTime, nullable=False)
+    animal_id = db.Column(db.Integer, db.ForeignKey("animal.id"), nullable=False)
+
+    animal = db.relationship("Animal", back_populates="alimentacoes", lazy=True)
