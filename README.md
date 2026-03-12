@@ -3,6 +3,7 @@
 ## Packs instalados
 flask 
 flask-sqlalchemy 
+flask-migrate
 flask-login
 flask-bcrypt
 flask-wtf

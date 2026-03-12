@@ -70,6 +70,7 @@ header {
 .menu-lateral {
     height: 85vh;
     display: flex;
+    justify-content: center;
 }
 
 .icones-menu {

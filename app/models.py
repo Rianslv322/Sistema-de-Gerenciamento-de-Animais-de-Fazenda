@@ -15,3 +15,4 @@ class Usuario(db.Model, UserMixin):
 
     def primeiro_nome(self):
         return self.nome.split()[0]
+    

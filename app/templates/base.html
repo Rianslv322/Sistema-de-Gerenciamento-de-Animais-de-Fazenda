@@ -30,11 +30,17 @@
                 <a href="{{ url_for('dashboard') }}" class="dashboard-menu {% if request.endpoint == 'dashboard'%} icone-menu-ativo {% endif %}">
                     <img src="{{ url_for('static', filename='img/dashboard.png') }}" alt="">
                 </a>
-                <a href="{{ url_for('cadastro_animal') }}" class="cadastro-animal-menu {% if request.endpoint == 'cadastro_animal'%} icone-menu-ativo {% endif %}">
+                <a href="{{ url_for('animal') }}" class="cadastro-animal-menu {% if request.endpoint == 'animal'%} icone-menu-ativo {% endif %}">
                     <img src="{{ url_for('static', filename='img/pata_animal.png') }}" alt="">
                 </a>
-                <a href="{{ url_for('saude_animal') }}" class="saude-animal-menu {% if request.endpoint == 'saude_animal'%} icone-menu-ativo {% endif %}">
+                <a href="{{ url_for('alimentacao') }}" class="relatorio-menu {% if request.endpoint == 'alimentacao'%} icone-menu-ativo {% endif %}">
+                    <img src="{{ url_for('static', filename='img/icone_trigo.png') }}" alt="">
+                </a>
+                <a href="{{ url_for('saude') }}" class="saude-animal-menu {% if request.endpoint == 'saude'%} icone-menu-ativo {% endif %}">
                     <img src="{{ url_for('static', filename='img/saude_animal.png') }}" alt="">
+                </a>
+                <a href="{{ url_for('vacinas') }}" class="relatorio-menu {% if request.endpoint == 'vacinas'%} icone-menu-ativo {% endif %}">
+                    <img src="{{ url_for('static', filename='img/icone_vacina.png') }}" alt="">
                 </a>
                 <a href="{{ url_for('relatorio') }}" class="relatorio-menu {% if request.endpoint == 'relatorio'%} icone-menu-ativo {% endif %}">
                     <img src="{{ url_for('static', filename='img/relatorio.png') }}" alt="">
@@ -42,11 +48,11 @@
             </div>
             <div class="categorias-menu">
                 <a href="{{ url_for('dashboard') }}" class="dashboard-menu {% if request.endpoint == 'dashboard' %} categoria-menu-ativa {% endif %}">Dashboard</a>
-                <a href="{{ url_for('cadastro_animal') }}" class="cadastro-animal-menu {% if request.endpoint == 'cadastro_animal' %} categoria-menu-ativa {% endif %}">Cadastro de Animais</a>
-                <a href="{{ url_for('saude_animal') }}" class="saude-animal-menu {% if request.endpoint == 'saude_animal' %} categoria-menu-ativa {% endif %}">Saúde dos Animais</a>
-                <a href="{{ url_for('relatorio') }}" class="relatorio-menu {% if request.endpoint == 'relatorio' %} categoria-menu-ativa {% endif %}">Relatórios</a>
-
-                <p class="info-site">Sistema de Gerenciamento de Animais de Fazenda - @2025</p>
+                <a href="{{ url_for('animal') }}" class="cadastro-animal-menu {% if request.endpoint == 'animal' %} categoria-menu-ativa {% endif %}">Animais</a>
+                <a href="{{ url_for('alimentacao') }}" class="relatorio-menu {% if request.endpoint == 'alimentacao' %} categoria-menu-ativa {% endif %}">Alimentação</a>
+                <a href="{{ url_for('saude') }}" class="saude-animal-menu {% if request.endpoint == 'saude' %} categoria-menu-ativa {% endif %}">Saúde</a>
+                <a href="{{ url_for('vacinas') }}" class="relatorio-menu {% if request.endpoint == 'vacinas' %} categoria-menu-ativa {% endif %}">Vacinas</a>
+                <a href="{{ url_for('relatorio') }}" class="relatorio-menu {% if request.endpoint == 'relatorio' %} categoria-menu-ativa {% endif %}">Relatório</a>
             </div>
         </aside>
 
