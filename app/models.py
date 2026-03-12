@@ -13,6 +13,18 @@ class Usuario(db.Model, UserMixin):
     email = db.Column(db.String(255), unique=True, nullable=False)
     senha = db.Column(db.String(255), nullable=False)
 
+    animais = db.relationship('Animal', backref='usuario', lazy=True)
+
+
     def primeiro_nome(self):
         return self.nome.split()[0]
     
+class Animal(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(100), nullable=False)
+    especie = db.Column(db.String(100), nullable=False)
+    data_nascimento = db.Column(db.Date, nullable=False)
+    peso = db.Column(db.Float)
+    observacoes = db.Column(db.Text)
+
+    usuario_id = db.Column(db.Integer, db.ForeignKey("usuario.id"), nullable=False)

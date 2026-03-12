@@ -48,6 +48,20 @@
     color: #ff3131;
 }
 
+.btn-novo {
+    background-color: #3088fa;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.btn-novo:hover {
+    background-color: #1779f8;
+    cursor: pointer;
+}
+
 .btn-excluir, .btn-editar {
     width: 30px;
     height: 30px;

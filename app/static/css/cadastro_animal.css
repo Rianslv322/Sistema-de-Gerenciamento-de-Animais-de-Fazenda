@@ -33,7 +33,7 @@
     font-size: 1.7em;
 }
 
-.campo-input input {
+.campo-input input, .especie-input, .text-area-input {
     width: 400px;
     height: 50px;
     outline: none;
@@ -44,7 +44,12 @@
     margin: 10px 0px 20px 0px;
 }
 
-.form-cadastro button[type="submit"] {
+.text-area-input {
+    max-height: 160px;
+    height: 100%;
+}
+
+.form-cadastro .btnSubmit {
     background-color: #404e39;
     width: 400px;
     height: 50px;
