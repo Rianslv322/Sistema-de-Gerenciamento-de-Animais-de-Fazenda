@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Adicionar Monitoramento {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/add_monitoramento.css') }}"> {% endblock %}
+
+{% block content %}
+    <section class="cadastro">
+        <h2>Adicionar Monitoramento</h2>
+
+        <form class="form-cadastro" autocomplete="off" method="POST">
+            {{ form.csrf_token }}
+            <div class="campo-input">
+                <div>
+                    {{ form.animal_id.label() }}
+                    {{ form.animal_id(class='select-input') }}
+                </div>
+            </div>
+            {{ form.btnSubmit(class='btnSubmit') }}
+        </form>
+    </section>
+{% endblock %}
+            

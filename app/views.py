@@ -2,15 +2,75 @@ from app import app, db
 from flask import render_template, url_for, request, redirect
 from flask_login import login_user, logout_user, current_user, login_required
 
-from app.models import Animal
-from app.forms import UsuarioForm, LoginForm, AnimalForm
+from app.models import Animal, Alimentacao, Saude, Vacina
+from app.forms import UsuarioForm, LoginForm, AnimalForm, AlimentacaoForm, SaudeForm, VacinaForm, MonitoramentoForm
 
 @app.route('/')
 def home():
     if (current_user.is_authenticated):
+        total_animais = Animal.query.filter_by(usuario_id = current_user.id).count()
+
         return redirect(url_for('dashboard'))
     return redirect(url_for('login'))
 
+# Dashboard
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    animais_monitoramento = Animal.query.filter_by(usuario_id=current_user.id, monitoramento=True).all()
+
+    dados = {
+        'total_animais': Animal.query.filter_by(usuario_id=current_user.id).count(),
+        'total_monitoramento': Animal.query.filter_by(usuario_id=current_user.id, monitoramento=True).count(),
+        'total_vacinas': Vacina.query.join(Animal).filter(Animal.usuario_id == current_user.id).count(),
+        'total_alimentacoes': Alimentacao.query.join(Animal).filter(Animal.usuario_id == current_user.id).count(),
+    }
+
+    resultados = []
+    for animal in animais_monitoramento:
+        ultima_saude = Saude.query.filter_by(animal_id=animal.id).order_by(Saude.id.desc()).first()
+        ultima_alimentacao = Alimentacao.query.filter_by(animal_id=animal.id).order_by(Alimentacao.id.desc()).first()
+        
+        resultados.append({
+            'animal': animal,
+            'ultima_saude': ultima_saude,
+            'ultima_alimentacao': ultima_alimentacao
+        })
+
+    return render_template('dashboard.html', resultados=resultados, dados=dados)
+
+@app.route('/add-monitoramento', methods=['GET', 'POST'])
+@login_required
+def add_monitoramento():
+    form = MonitoramentoForm()
+    animais = Animal.query.filter_by(usuario_id=current_user.id, monitoramento=False).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
+
+    if form.validate_on_submit():
+        animal_id = form.animal_id.data
+        animal = Animal.query.filter_by(usuario_id=current_user.id, id=animal_id).first()
+
+        if animal:
+            animal.monitoramento = True
+            db.session.commit()
+
+        return redirect(url_for('dashboard'))
+
+    return render_template('add_monitoramento.html', form=form)
+
+@app.route('/rem-monitoramento/<int:id>', methods=['GET', 'POST'])
+@login_required
+def rem_monitoramento(id):
+    animal = Animal.query.filter_by(usuario_id=current_user.id, monitoramento=True, id=id).first()
+    
+    if animal:
+        animal.monitoramento = False
+        db.session.commit()
+
+    return redirect(url_for('dashboard'))
+
+
+# Cadastro e Login
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     form = UsuarioForm()
@@ -33,11 +93,7 @@ def sair():
     logout_user()
     return redirect(url_for('login'))
 
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    return render_template('dashboard.html')
-
+# Rotas - Animais
 @app.route('/animal', methods=['GET', 'POST'])
 @login_required
 def animal():
@@ -78,21 +134,148 @@ def excluir_animal(id):
 
     return redirect(url_for('animal'))
 
-@app.route('/alimentacao')
+# Rotas - Alimentação
+@app.route('/alimentacao', methods=['GET', 'POST'])
 @login_required
 def alimentacao():
-    return render_template('alimentacao.html')
+    alimentacoes = Alimentacao.query.join(Animal).filter(Animal.usuario_id == current_user.id).all()
+    return render_template('alimentacao.html', alimentacoes=alimentacoes)
 
-@app.route('/saude')
+@app.route('/cadastro-alimentacao', methods=['GET', 'POST'])
+@login_required
+def cadastro_alimentacao():
+    form = AlimentacaoForm()
+    animais = Animal.query.filter_by(usuario_id=current_user.id).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
+
+    if form.validate_on_submit():
+        form.save()
+        return redirect(url_for('alimentacao'))
+
+    return render_template('cadastro_alimentacao.html', form=form)
+
+@app.route('/editar-alimentacao/<int:id>', methods=['GET', 'POST'])
+@login_required
+def editar_alimentacao(id):
+    alimentacao = Alimentacao.query.get_or_404(id)
+
+    form = AlimentacaoForm(obj=alimentacao)
+    animais = Animal.query.filter_by(usuario_id=current_user.id).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
+
+    if form.validate_on_submit():
+        form.populate_obj(alimentacao)
+
+        db.session.commit()
+
+        return redirect(url_for('alimentacao'))
+    return render_template('cadastro_alimentacao.html', form=form)
+
+@app.route('/excluir-alimentacao/<int:id>')
+@login_required
+def excluir_alimentacao(id):
+    alimentacao = Alimentacao.query.get_or_404(id)
+
+    db.session.delete(alimentacao)
+    db.session.commit()
+
+    return redirect(url_for('alimentacao'))
+
+# Rotas - Saúdes
+@app.route('/saude', methods=['GET', 'POST'])
 @login_required
 def saude():
-    return render_template('saude.html')
+    saudes = Saude.query.join(Animal).filter(Animal.usuario_id == current_user.id).all()
+    return render_template('saude.html', saudes=saudes)
 
-@app.route('/vacinas')
+@app.route('/cadastro-saude', methods=['GET', 'POST'])
 @login_required
-def vacinas():
-    return render_template('vacinas.html')
+def cadastro_saude():
+    form = SaudeForm()
+    animais = Animal.query.filter_by(usuario_id=current_user.id).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
 
+    if form.validate_on_submit():
+        form.save()
+        return redirect(url_for('saude'))
+
+    return render_template('cadastro_saude.html', form=form)
+
+@app.route('/editar-saude/<int:id>', methods=['GET', 'POST'])
+@login_required
+def editar_saude(id):
+    saude = Saude.query.get_or_404(id)
+
+    form = SaudeForm(obj=saude)
+    animais = Animal.query.filter_by(usuario_id=current_user.id).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
+
+    if form.validate_on_submit():
+        form.populate_obj(saude)
+
+        db.session.commit()
+
+        return redirect(url_for('saude'))
+    return render_template('cadastro_saude.html', form=form)
+
+@app.route('/excluir-saude/<int:id>')
+@login_required
+def excluir_saude(id):
+    saude = Saude.query.get_or_404(id)
+
+    db.session.delete(saude)
+    db.session.commit()
+
+    return redirect(url_for('saude'))
+
+# Rotas - Vacinas
+@app.route('/vacina', methods=['GET', 'POST'])
+@login_required
+def vacina():
+    vacinas = Vacina.query.join(Animal).filter(Animal.usuario_id == current_user.id).all()
+    return render_template('vacina.html', vacinas=vacinas)
+
+@app.route('/cadastro-vacina', methods=['GET', 'POST'])
+@login_required
+def cadastro_vacina():
+    form = VacinaForm()
+    animais = Animal.query.filter_by(usuario_id=current_user.id).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
+
+    if form.validate_on_submit():
+        form.save()
+        return redirect(url_for('vacina'))
+
+    return render_template('cadastro_vacina.html', form=form)
+
+@app.route('/editar-vacina/<int:id>', methods=['GET', 'POST'])
+@login_required
+def editar_vacina(id):
+    vacina = Vacina.query.get_or_404(id)
+
+    form = VacinaForm(obj=vacina)
+    animais = Animal.query.filter_by(usuario_id=current_user.id).all()
+    form.animal_id.choices = [(animal.id, f"{animal.nome} ({animal.especie})") for animal in animais]
+
+    if form.validate_on_submit():
+        form.populate_obj(vacina)
+
+        db.session.commit()
+
+        return redirect(url_for('vacina'))
+    return render_template('cadastro_vacina.html', form=form)
+
+@app.route('/excluir-vacina/<int:id>')
+@login_required
+def excluir_vacina(id):
+    vacina = Vacina.query.get_or_404(id)
+
+    db.session.delete(vacina)
+    db.session.commit()
+
+    return redirect(url_for('vacina'))
+
+# Rotas - Relatório
 @app.route('/relatorio')
 @login_required
 def relatorio():

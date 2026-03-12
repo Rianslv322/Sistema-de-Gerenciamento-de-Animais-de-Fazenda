@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Cadastro - Vacina {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro_vacina.css') }}"> {% endblock %}
+
+{% block content %}
+    <section class="cadastro">
+        <h2>Cadastro de Vacina</h2>
+
+        <form class="form-cadastro" autocomplete="off" method="POST">
+            {{ form.csrf_token }}
+            <div class="campo-input">
+                <div>
+                    {{ form.animal_id.label() }}
+                    {{ form.animal_id(class='select-input') }}
+                    {{ form.nome_vacina.label() }}
+                    {{ form.nome_vacina() }}
+                </div>
+                <div>
+                    {{ form.data_aplicacao.label() }}
+                    {{ form.data_aplicacao() }}
+                    {{ form.prox_aplicacao.label() }}
+                    {{ form.prox_aplicacao() }}
+                </div>
+            </div>
+            {{ form.btnSubmit(class='btnSubmit') }}
+        </form>
+    </section>
+{% endblock %}
+            

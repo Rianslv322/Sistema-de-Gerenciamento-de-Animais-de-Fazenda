@@ -13,9 +13,8 @@
                     <th>Nome:</th>
                     <th>Espécie:</th>
                     <th>Idade:</th>
-                    <th>Alimentação:</th>
-                    <th>Saúde</th>
-                    <th>Vacinação:</th>
+                    <th>Peso:</th>
+                    <th>Observações</th>
                     <th><a href="{{ url_for('cadastro_animal') }}" class="btn-novo">Novo</a></th>
                 </tr>
             </thead>
@@ -25,9 +24,8 @@
                     <td>{{ linha.nome }}</td>
                     <td>{{ linha.especie }}</td>
                     <td>{{ linha.idade }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ linha.peso if linha.peso else ''}}</td>
+                    <td>{{ linha.observacoes }}</td>
                     <td class="btns-acoes">
                         <a href="{{ url_for('editar_animal', id=linha.id) }}" class="btn-editar"><img src="{{ url_for('static', filename='img/icone_editar.png') }}" alt=""></a>
                         <a href="{{ url_for('excluir_animal', id=linha.id) }}" class="btn-excluir"><img src="{{ url_for('static', filename='img/icone_excluir.png') }}" alt=""></a>
