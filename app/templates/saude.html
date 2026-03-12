@@ -26,7 +26,7 @@
                     <td>{{ linha.animal.especie }}</td>
                     <td>{{ linha.doenca_condicao }}</td>
                     <td>{{ linha.tratamento }}</td>
-                    <td>{{ linha.ultima_consulta }}</td>
+                    <td>{{ linha.ultima_consulta if linha.ultima_consulta else '' }}</td>
                     <td>{{ linha.observacoes }}</td>
                     <td class="btns-acoes">
                         <a href="{{ url_for('editar_saude', id=linha.id) }}" class="btn-editar"><img src="{{ url_for('static', filename='img/icone_editar.png') }}" alt=""></a>

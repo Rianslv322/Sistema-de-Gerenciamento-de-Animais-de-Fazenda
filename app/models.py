@@ -27,6 +27,7 @@ class Animal(db.Model):
     data_nascimento = db.Column(db.Date, nullable=False)
     peso = db.Column(db.Float)
     observacoes = db.Column(db.Text)
+    monitoramento = db.Column(db.Boolean, default=False)
     usuario_id = db.Column(db.Integer, db.ForeignKey("usuario.id"), nullable=False)
 
     alimentacoes = db.relationship("Alimentacao", back_populates="animal", lazy=True)
@@ -76,4 +77,3 @@ class Vacina(db.Model):
     animal_id = db.Column(db.Integer, db.ForeignKey("animal.id"), nullable=False)
 
     animal = db.relationship("Animal", back_populates="vacinas", lazy=True)
-

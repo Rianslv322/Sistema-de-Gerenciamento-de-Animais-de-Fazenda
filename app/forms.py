@@ -76,6 +76,7 @@ class AnimalForm(FlaskForm):
             data_nascimento = self.data_nascimento.data,
             peso = self.peso.data,
             observacoes = self.observacoes.data,
+            monitoramento = False,
             usuario_id = usuario_id
         )
 
@@ -104,7 +105,7 @@ class SaudeForm(FlaskForm):
     animal_id = SelectField("Animal:", coerce=int, validators=[DataRequired()])
     doenca_condicao = StringField("Doença/Condição:", validators=[DataRequired()])
     tratamento = StringField("Tratamento:", validators=[DataRequired()])
-    ultima_consulta = DateField("Data da consulta:")
+    ultima_consulta = DateField("Data da consulta:", validators=[Optional()])
     observacoes = TextAreaField("Observações:")
     btnSubmit = SubmitField("Cadastrar Saúde")
 
@@ -124,7 +125,7 @@ class VacinaForm(FlaskForm):
     animal_id = SelectField("Animal", coerce=int, validators=[DataRequired()])
     nome_vacina = StringField("Nome da vacina", validators=[DataRequired()])
     data_aplicacao = DateField("Data da aplicação: ", validators=[DataRequired()])
-    prox_aplicacao = DateField("Proxima aplicação: ", validators=[DataRequired()])
+    prox_aplicacao = DateField("Proxima aplicação: ", validators=[Optional()])
     btnSubmit = SubmitField("Cadastrar Vacina")
 
     def save(self):
@@ -137,3 +138,7 @@ class VacinaForm(FlaskForm):
 
         db.session.add(vacina)
         db.session.commit()
+
+class MonitoramentoForm(FlaskForm):
+    animal_id = SelectField("Animal", coerce=int, validators=[DataRequired()])
+    btnSubmit = SubmitField("Adicionar Monitoramento")

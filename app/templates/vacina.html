@@ -25,7 +25,7 @@
                     <td>{{ linha.animal.especie }}</td>
                     <td>{{ linha.nome_vacina }}</td>
                     <td>{{ linha.data_aplicacao }}</td>
-                    <td>{{ linha.prox_aplicacao }}</td>
+                    <td>{{ linha.prox_aplicacao if linha.prox_aplicacao else '' }}</td>
                     <td class="btns-acoes">
                         <a href="{{ url_for('editar_vacina', id=linha.id) }}" class="btn-editar"><img src="{{ url_for('static', filename='img/icone_editar.png') }}" alt=""></a>
                         <a href="{{ url_for('excluir_vacina', id=linha.id) }}" class="btn-excluir"><img src="{{ url_for('static', filename='img/icone_excluir.png') }}" alt=""></a>
