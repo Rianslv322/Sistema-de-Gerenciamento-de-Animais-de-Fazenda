@@ -8,39 +8,25 @@
     <section class="cadastro-animal">
         <h2>Cadastro de Animal</h2>
 
-        <form class="form-cadastro" autocomplete="off">
+        <form class="form-cadastro" autocomplete="off" method="POST">
+            {{ form.csrf_token }}
             <div class="campo-input">
                 <div>
-                    <label for="nome">
-                        Nome:
-                        <input type="text" name="nnome" id="nome" required>
-                    </label>
-                    <label for="especie">
-                        Espécie:
-                        <input type="text" name="nespecie" id="especie" required>
-                    </label>
-                    <label for="data-nasc">
-                        Data de Nascimento:
-                        <input type="datetime" name="ndata-nasc" id="data-nasc" required>
-                    </label>
+                    {{ form.nome.label() }}
+                    {{ form.nome() }}
+                    {{ form.especie.label() }}
+                    {{ form.especie(class='especie-input') }}
+                    {{ form.data_nascimento.label() }}
+                    {{ form.data_nascimento() }}
                 </div>
                 <div>
-                    <label for="saude-animal">
-                        Saúde do Animal:
-                        <input type="text" name="nsaude-animal" id="saude-animal" required>
-                    </label>
-                    <label for="historico-vacina">
-                        Histórico de Vacinas:
-                        <input type="text" name="nhistorico-vacina" id="historico-vacina">
-                    </label>
-                    <label for="racao">
-                        Ração:
-                        <input type="text" name="nracao" id="racao" required>
-                    </label>
+                    {{ form.peso.label() }}
+                    {{ form.peso() }}
+                    {{ form.observacoes.label() }}
+                    {{ form.observacoes(class='text-area-input') }}
                 </div>
             </div>
-
-            <button type="submit">Cadastrar</button>
+            {{ form.btnSubmit(class='btnSubmit') }}
         </form>
     </section>
 {% endblock %}

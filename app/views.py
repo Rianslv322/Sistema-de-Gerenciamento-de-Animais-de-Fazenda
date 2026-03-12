@@ -1,8 +1,9 @@
-from app import app
+from app import app, db
 from flask import render_template, url_for, request, redirect
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user, login_required
 
-from app.forms import UsuarioForm, LoginForm
+from app.models import Animal
+from app.forms import UsuarioForm, LoginForm, AnimalForm
 
 @app.route('/')
 def home():
@@ -33,29 +34,66 @@ def sair():
     return redirect(url_for('login'))
 
 @app.route('/dashboard')
+@login_required
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/cadastro-animal')
-def cadastro_animal():
-    return render_template('cadastro_animal.html')
+@app.route('/animal', methods=['GET', 'POST'])
+@login_required
+def animal():
+    animais = Animal.query.filter_by(usuario_id = current_user.id).all()
+    return render_template('animal.html', animais=animais)
 
-@app.route('/saude-animal')
-def saude_animal():
-    return render_template('saude_animal.html')
+@app.route('/cadastro-animal', methods=['GET', 'POST'])
+@login_required
+def cadastro_animal():
+    form = AnimalForm()
+    if form.validate_on_submit():
+        form.save(current_user.id)
+        return redirect(url_for('animal'))
+    return render_template('cadastro_animal.html', form=form)
+
+@app.route('/editar-animal/<int:id>', methods=['GET', 'POST'])
+@login_required
+def editar_animal(id):
+    animal = Animal.query.get_or_404(id)
+
+    form = AnimalForm(obj=animal)
+
+    if form.validate_on_submit():
+        form.populate_obj(animal)
+
+        db.session.commit()
+
+        return redirect(url_for('animal'))
+    return render_template('cadastro_animal.html', form=form)
+
+@app.route('/excluir-animal/<int:id>')
+@login_required
+def excluir_animal(id):
+    animal = Animal.query.get_or_404(id)
+
+    db.session.delete(animal)
+    db.session.commit()
+
+    return redirect(url_for('animal'))
+
+@app.route('/alimentacao')
+@login_required
+def alimentacao():
+    return render_template('alimentacao.html')
+
+@app.route('/saude')
+@login_required
+def saude():
+    return render_template('saude.html')
+
+@app.route('/vacinas')
+@login_required
+def vacinas():
+    return render_template('vacinas.html')
 
 @app.route('/relatorio')
+@login_required
 def relatorio():
     return render_template('relatorio.html')
-
-@app.route('/relatorio-status')
-def relatorio_status():
-    return render_template('relatorio_status.html')
-
-@app.route('/relatorio-alimentacao')
-def relatorio_alimentacao():
-    return render_template('relatorio_alimentacao.html')
-
-@app.route('/relatorio-saude')
-def relatorio_saude():
-    return render_template('relatorio_saude.html')

@@ -1,29 +1,108 @@
 {% extends 'base.html' %}
 
-{% block title %} Relatórios {% endblock %}
+{% block title %} Relatório - Status {% endblock %}
 
 {% block css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorio.css') }}"> {% endblock %}
 
+{% block header %} Status dos Animais {% endblock %}
+
 {% block content %}
-    <section class="relatorios">
-        <a href="{{ url_for('relatorio_status') }}" style="text-decoration: none;">
-            <div class="card-relatorio" id="card-status">
-                <p>Status:</p>
-                <img src="{{ url_for('static', filename='img/relatorio_status.png') }}" alt="">
+    <section class="campo-pesquisa">
+        <input type="text" name="pesquisa" id="pesquisa">
+        <img src="img/lupa_nova.png" alt="">
+    </section>
+
+    <section class="status-animal">
+        <div class="lista-animal">
+            <div class="card-animal card-ativo">
+                <div class="info-card">
+                    <h3>Mimosa</h3>
+                    <p id="especie"><span class="destaque-negrito">Espécie:</span> Vaca</p>
+                    <p id="ident"><span class="destaque-negrito">ID:</span> 000-abc</p>
+                </div>
+
+                <div class="img-card-animal">
+                    <img src="img/foto_mimosa.png" alt="">
+                </div>
             </div>
-        </a>
-        <a href="{{ url_for('relatorio_alimentacao') }}" style="text-decoration: none;">
-            <div class="card-relatorio" id="card-alimentacao">
-                <p>Alimentação:</p>
-                <img src="{{ url_for('static', filename='img/relatorio_alimentacao.png') }}" alt="">
+
+            <div class="card-animal">
+                <div class="info-card">
+                    <h3>Milk</h3>
+                    <p id="especie"><span class="destaque-negrito">Espécie:</span> Cabrito</p>
+                    <p id="ident"><span class="destaque-negrito">ID:</span> 001-abc</p>
+                </div>
+
+                <div class="img-card-animal">
+                    <img src="img/foto_milk.png" alt="">
+                </div>
             </div>
-        </a>
-        <a href="{{ url_for('relatorio_saude') }}" style="text-decoration: none;">
-            <div class="card-relatorio" id="card-saude">
-                <p>Saúde:</p>
-                <img src="{{ url_for('static', filename='img/relatorio_saude.png') }}" alt="">
+            
+            <div class="card-animal">
+                <div class="info-card">
+                    <h3>Luna</h3>
+                    <p id="especie"><span class="destaque-negrito">Espécie:</span> Égua</p>
+                    <p id="ident"><span class="destaque-negrito">ID:</span> 002-abc</p>
+                </div>
+
+                <div class="img-card-animal">
+                    <img src="img/foto_luna.png" alt="">
+                </div>
             </div>
-        </a>
+
+            <div class="card-animal">
+                <div class="info-card">
+                    <h3>Estrela</h3>
+                    <p id="especie"><span class="destaque-negrito">Espécie:</span> Leitoa</p>
+                    <p id="ident"><span class="destaque-negrito">ID:</span> 003-abc</p>
+                </div>
+
+                <div class="img-card-animal">
+                    <img src="img/foto_estrela.png" alt="">
+                </div>
+            </div>
+
+            <div class="card-animal">
+                <div class="info-card">
+                    <h3>Rex</h3>
+                    <p id="especie"><span class="destaque-negrito">Espécie:</span> Cachorro</p>
+                    <p id="ident"><span class="destaque-negrito">ID:</span> 004-abc</p>
+                </div>
+
+                <div class="img-card-animal">
+                    <img src="img/foto_rex.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="info-animal">
+            <div class="info-principal">
+                <div class="informacoes">
+                    <h3>Mimosa</h3>
+                    <p id="especie"><span class="destaque-negrito">Espécie:</span> Vaca</p>
+                    <p id="ident"><span class="destaque-negrito">ID:</span> 000-abc</p>
+                    <br>
+                    <p id="peso"><span class="destaque-negrito">Peso:</span> 120kg</p>
+                    <p id="racao"><span class="destaque-negrito">Ração:</span> capim</p>
+                    <p id="qntdd-diaria"><span class="destaque-negrito">Qntdd diária:</span> 6kg</p>
+                    <p id="data_nasc"><span class="destaque-negrito">Data Nasc.:</span> 28/02/2023</p>
+                </div>
+
+                <div class="imagem-animal">
+                    <img src="img/foto_mimosa.png" alt="">
+                </div>
+            </div>
+
+            <div class="info-adicional">
+                <p id="observacao"><span class="destaque-negrito">Observações:</span> Tem alergia à rações comuns. Desde novinha ela só consumiu leite da mãe, e quando maior, apenas capim. Quando consumia qualquer outro tipo de ração, apresentava problemas de saúde.</p>
+                <br>
+                <p id="vacinacao"><span class="destaque-negrito">Vacinações:</span> Vacinada atualmente contra HPV, Hepatite A e C. Porém, com vacina de gripe atrasada.</p>
+            </div>
+
+            <div class="baixar-relatorio">
+                <button id="btn-baixar">Baixar relatório</button>
+            </div>
+        </div>
     </section>
 {% endblock %}
             

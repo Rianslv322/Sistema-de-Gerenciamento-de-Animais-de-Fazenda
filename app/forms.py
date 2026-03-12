@@ -1,9 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, SelectField, TextAreaField, DateField, FloatField
+from wtforms.validators import DataRequired, Email, ValidationError, Optional
+from flask_login import current_user
 
 from app import db, bcrypt
-from app.models import Usuario
+from app.models import Usuario, Animal
 
 class LoginForm(FlaskForm):
     email = StringField('Email:', validators=[DataRequired(), Email()])
@@ -49,3 +50,34 @@ class UsuarioForm(FlaskForm):
         db.session.commit()
 
         return usuario
+    
+class AnimalForm(FlaskForm):
+    nome = StringField('Nome:', validators=[DataRequired()])
+    especie = SelectField('Espécie:', choices=[
+        ("Vaca", "Vaca"),
+        ("Cabrito", "Cabrito"),
+        ("Galinha", "Galinha"),
+        ("Cavalo", "Cavalo"),
+        ("Porco", "Porco"),
+        ("Ovelha", "Ovelha"),
+        ("Cachorro", "Cachorro"),
+        ("Égua", "Égua"),
+        ("Outro", "Outro")
+    ], validators=[DataRequired()])
+    data_nascimento = DateField("Data de Nascimento: ", validators=[DataRequired()])
+    peso = FloatField('Peso (kg): ', validators=[Optional()])
+    observacoes = TextAreaField('Observações: ')
+    btnSubmit = SubmitField("Cadastrar Animal")
+
+    def save(self, usuario_id):
+        animal = Animal(
+            nome = self.nome.data,
+            especie = self.especie.data,
+            data_nascimento = self.data_nascimento.data,
+            peso = self.peso.data,
+            observacoes = self.observacoes.data,
+            usuario_id = usuario_id
+        )
+
+        db.session.add(animal)
+        db.session.commit()
