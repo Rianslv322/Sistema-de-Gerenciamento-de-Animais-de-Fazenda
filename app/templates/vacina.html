@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Vacina {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/vacina.css') }}"> {% endblock %}
+
+{% block content %}
+    <section class="registro">
+        <h2>Tabela de Vacina: </h2>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Nome:</th>
+                    <th>Espécie:</th>
+                    <th>Nome da Vacina:</th>
+                    <th>Data da Aplicação:</th>
+                    <th>Próxima Aplicação:</th>
+                    <th><a href="{{ url_for('cadastro_vacina') }}" class="btn-novo">Novo</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for linha in vacinas %}
+                <tr>
+                    <td>{{ linha.animal.nome }}</td>
+                    <td>{{ linha.animal.especie }}</td>
+                    <td>{{ linha.nome_vacina }}</td>
+                    <td>{{ linha.data_aplicacao }}</td>
+                    <td>{{ linha.prox_aplicacao }}</td>
+                    <td class="btns-acoes">
+                        <a href="{{ url_for('editar_vacina', id=linha.id) }}" class="btn-editar"><img src="{{ url_for('static', filename='img/icone_editar.png') }}" alt=""></a>
+                        <a href="{{ url_for('excluir_vacina', id=linha.id) }}" class="btn-excluir"><img src="{{ url_for('static', filename='img/icone_excluir.png') }}" alt=""></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}
+            

@@ -31,6 +31,7 @@ class Animal(db.Model):
 
     alimentacoes = db.relationship("Alimentacao", back_populates="animal", lazy=True)
     saudes = db.relationship("Saude", back_populates="animal", lazy=True)
+    vacinas = db.relationship("Vacina", back_populates="animal", lazy=True)
 
     @property
     def idade(self):
@@ -66,4 +67,13 @@ class Saude(db.Model):
     animal_id = db.Column(db.Integer, db.ForeignKey("animal.id"), nullable=False)
 
     animal = db.relationship("Animal", back_populates="saudes", lazy=True)
+
+class Vacina(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome_vacina = db.Column(db.String(150), nullable=False)
+    data_aplicacao = db.Column(db.Date, nullable=False)
+    prox_aplicacao = db.Column(db.Date)
+    animal_id = db.Column(db.Integer, db.ForeignKey("animal.id"), nullable=False)
+
+    animal = db.relationship("Animal", back_populates="vacinas", lazy=True)
 

@@ -11,24 +11,24 @@
     font-size: 2em;
 }
 
-.tabela-monitoramento {
+.tabela {
     border-collapse: collapse;
     margin: 20px 0px;
     width: 100%;
     text-align: center;
 }
 
-.tabela-monitoramento th {
+.tabela th {
     padding: 15px;
     font-size: 1.7em;
 }
 
-.tabela-monitoramento td {
+.tabela td {
     padding: 10px;
     font-size: 1.5em;
 }
 
-.tabela-monitoramento th, td {
+.tabela th, td {
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -46,6 +46,33 @@
 
 .status.atrasado {
     color: #ff3131;
+}
+
+.btn-novo {
+    background-color: #3088fa;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.btn-novo:hover {
+    background-color: #1779f8;
+    cursor: pointer;
+}
+
+.btns-acoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-excluir, .btn-editar {
