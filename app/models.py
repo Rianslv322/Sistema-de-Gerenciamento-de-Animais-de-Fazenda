@@ -1,5 +1,6 @@
 from app import db, login_manager
 from flask_login import UserMixin
+from datetime import date
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -28,3 +29,19 @@ class Animal(db.Model):
     observacoes = db.Column(db.Text)
 
     usuario_id = db.Column(db.Integer, db.ForeignKey("usuario.id"), nullable=False)
+
+    @property
+    def idade(self):
+        hoje = date.today()
+
+        anos = hoje.year - self.data_nascimento.year
+        meses = hoje.month - self.data_nascimento.month
+
+        if hoje.day < self.data_nascimento.day:
+            meses -= 1
+
+        if meses < 0:
+            anos -= 1
+            meses += 12
+
+        return f"{anos} anos e {meses} meses"

@@ -1,7 +1,8 @@
-from app import app
+from app import app, db
 from flask import render_template, url_for, request, redirect
 from flask_login import login_user, logout_user, current_user, login_required
 
+from app.models import Animal
 from app.forms import UsuarioForm, LoginForm, AnimalForm
 
 @app.route('/')
@@ -37,19 +38,45 @@ def sair():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/animal')
+@app.route('/animal', methods=['GET', 'POST'])
 @login_required
 def animal():
-    return render_template('animal.html')
+    animais = Animal.query.filter_by(usuario_id = current_user.id).all()
+    return render_template('animal.html', animais=animais)
 
 @app.route('/cadastro-animal', methods=['GET', 'POST'])
 @login_required
 def cadastro_animal():
     form = AnimalForm()
     if form.validate_on_submit():
-        form.save()
+        form.save(current_user.id)
         return redirect(url_for('animal'))
     return render_template('cadastro_animal.html', form=form)
+
+@app.route('/editar-animal/<int:id>', methods=['GET', 'POST'])
+@login_required
+def editar_animal(id):
+    animal = Animal.query.get_or_404(id)
+
+    form = AnimalForm(obj=animal)
+
+    if form.validate_on_submit():
+        form.populate_obj(animal)
+
+        db.session.commit()
+
+        return redirect(url_for('animal'))
+    return render_template('cadastro_animal.html', form=form)
+
+@app.route('/excluir-animal/<int:id>')
+@login_required
+def excluir_animal(id):
+    animal = Animal.query.get_or_404(id)
+
+    db.session.delete(animal)
+    db.session.commit()
+
+    return redirect(url_for('animal'))
 
 @app.route('/alimentacao')
 @login_required

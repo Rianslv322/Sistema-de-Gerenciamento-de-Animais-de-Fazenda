@@ -69,14 +69,14 @@ class AnimalForm(FlaskForm):
     observacoes = TextAreaField('Observações: ')
     btnSubmit = SubmitField("Cadastrar Animal")
 
-    def save(self):
+    def save(self, usuario_id):
         animal = Animal(
             nome = self.nome.data,
             especie = self.especie.data,
             data_nascimento = self.data_nascimento.data,
             peso = self.peso.data,
             observacoes = self.observacoes.data,
-            usuario_id = current_user.id
+            usuario_id = usuario_id
         )
 
         db.session.add(animal)
