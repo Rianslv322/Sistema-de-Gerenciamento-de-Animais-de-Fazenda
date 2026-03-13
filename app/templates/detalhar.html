@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Detalhes - Animal {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/detalhar.css') }}"> {% endblock %}
+
+{% block content %}
+        <section>
+            <div class="info-animal">
+                <div class="info-principal">
+                    <div class="informacoes">
+                        <h3>{{ resultados.animal.nome }}</h3>
+                        <p>Espécie: {{ resultados.animal.especie }}</p>
+                        <p>ID: {{ resultados.animal.id }}</p>
+                        <p>Peso: {{ resultados.animal.peso }} Kg</p>
+                        <p>Ração: {{ resultados.alimentacao.tipo_racao }}</p>
+                        <p>Quantidade diária: {{ resultados.alimentacao.quantidade }} Kg</p>
+                        <p>Data de Nascimento: {{ resultados.animal.data_nascimento }}</p>
+                    </div>
+                    <div class="imagem-animal">
+                        {% if resultados.animal.imagem %}
+                            <img src="{{ url_for('static', filename='data/animal_picture/' + resultados.animal.imagem) }}" alt="">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='data/animal_picture/default.png') }}" alt="">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="info-adicional">
+                    <p id="observacao">
+                        Observações:
+                        {{ resultados.animal.observacoes if resultados.animal.observacoes else '' }}
+                        {{ resultados.observacoes if resultados.observacoes else '' }}
+                    </p>
+                    <p id="vacinacao">
+                        Vacinações:
+                        {{ resultados.vacinas if resultados.vacinas else '' }}
+                    </p>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+            

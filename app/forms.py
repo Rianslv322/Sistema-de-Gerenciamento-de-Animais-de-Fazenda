@@ -1,9 +1,12 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField, TextAreaField, DateField, FloatField, DateTimeLocalField
+from wtforms import StringField, PasswordField, SubmitField, SelectField, TextAreaField, DateField, FloatField, DateTimeLocalField, FileField
 from wtforms.validators import DataRequired, Email, ValidationError, Optional
 from flask_login import current_user
 
-from app import db, bcrypt
+import os
+from werkzeug.utils import secure_filename
+
+from app import db, bcrypt, app
 from app.models import Usuario, Animal, Alimentacao, Saude, Vacina
 
 class LoginForm(FlaskForm):
@@ -66,15 +69,28 @@ class AnimalForm(FlaskForm):
     ], validators=[DataRequired()])
     data_nascimento = DateField("Data de Nascimento: ", validators=[DataRequired()])
     peso = FloatField('Peso (kg): ', validators=[Optional()])
+    imagem = FileField('Imagem do Animal: ', validators=[Optional()])
     observacoes = TextAreaField('Observações: ')
     btnSubmit = SubmitField("Cadastrar Animal")
 
     def save(self, usuario_id):
+        # FIX
+        UPLOAD_FOLDER = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static', 'data', 'animal_picture')
+
+        if self.imagem.data:
+            imagem = self.imagem.data
+            secure_name = secure_filename(imagem.filename)
+            path = os.path.join(UPLOAD_FOLDER, secure_name)
+            imagem.save(path)
+        else:
+            secure_name = 'default.png'
+
         animal = Animal(
             nome = self.nome.data,
             especie = self.especie.data,
             data_nascimento = self.data_nascimento.data,
             peso = self.peso.data,
+            imagem = secure_name,
             observacoes = self.observacoes.data,
             monitoramento = False,
             usuario_id = usuario_id
