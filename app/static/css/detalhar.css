@@ -1,8 +1,6 @@
 section {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 40px 0;
 }
 
 .info-animal {
@@ -16,7 +14,7 @@ section {
     padding: 20px;
     border-radius: 10px;
 
-    font-size: 1.3em;
+    font-size: 1em;
     color: #ffffff;
 }
 
@@ -34,12 +32,12 @@ section {
 }
 
 .informacoes h3 {
-    font-size: 3em;
+    font-size: 1.7em;
 }
 
 .imagem-animal > img{
     width: 100%;
-    max-width: 300px;
+    max-width: 250px;
     border-radius: 10px;
     border: 1px solid #ffffff;
 }

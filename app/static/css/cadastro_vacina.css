@@ -8,7 +8,7 @@
 }
 
 .cadastro > h2 {
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: center;
     margin: 20px 0px;
 }
@@ -26,7 +26,7 @@
 }
 
 .form-cadastro label {
-    font-size: 1.7em;
+    font-size: 1em;
 }
 
 .campo-input {
@@ -43,7 +43,8 @@
 }
 
 .campo-input input, .select-input, .text-area-input {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 50px;
     outline: none;
     border: 2px solid rgba(0, 0, 0, 0.250);
