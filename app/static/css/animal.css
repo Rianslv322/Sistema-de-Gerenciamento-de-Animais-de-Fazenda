@@ -1,51 +1,38 @@
 .registro {
+    width: 100%;
     background-color: #ffffff;
     border-radius: 10px;
-    padding: 10px;
+    padding: 2%;
     margin-top: 25px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.250);
 }
 
 .registro h2 {
     text-align: center;
-    font-size: 2em;
+    font-size: 2rem;
 }
 
 .tabela-animal {
     border-collapse: collapse;
-    margin: 20px 0px;
+    margin: 2% 0px;
     width: 100%;
     text-align: center;
+    font-size: 1em;
 }
 
 .tabela-animal th {
-    padding: 15px;
-    font-size: 1.7em;
+    padding: 1em;
+    font-size: 1em;
 }
 
 .tabela-animal td {
     padding: 10px;
-    font-size: 1.5em;
+    font-size: 1em;
+    word-wrap: break-word;
 }
 
 .tabela-animal th, td {
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
-}
-
-.status {
-    text-decoration: underline;
-}
-
-.status.registrar {
-    color: #ff914d;
-}
-
-.status.emdia, .status.regular {
-    color: #00bf63;
-}
-
-.status.atrasado {
-    color: #ff3131;
 }
 
 .btn-novo {
@@ -67,12 +54,6 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-}
-
-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .btn-excluir, .btn-editar {

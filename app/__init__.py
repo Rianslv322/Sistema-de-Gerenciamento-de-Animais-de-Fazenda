@@ -4,13 +4,14 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 
-from local_settings import SECRET_KEY, DATABASE_URI
+from local_settings import SECRET_KEY, DATABASE_URI, UPLOAD_PATH
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 app.config['SQLALCHMEY_TRACK_MODIFICATIONS'] = False
+app.config['UPLOAD_FILES'] = UPLOAD_PATH
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

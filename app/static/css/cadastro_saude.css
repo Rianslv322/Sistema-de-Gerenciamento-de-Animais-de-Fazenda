@@ -2,13 +2,13 @@
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
-    margin: 25px auto;
+    margin: 0 auto;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.250);
     width: 80%;
 }
 
 .cadastro > h2 {
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: center;
     margin: 20px 0px;
 }
@@ -26,14 +26,14 @@
 }
 
 .form-cadastro label {
-    font-size: 1.7em;
+    font-size: 1em;
 }
 
 .campo-input {
     display: flex;
     justify-content: space-around;
     gap: 10px;
-    margin: 25px;
+    margin: 15px;
     width: 100%;
 }
 
@@ -43,7 +43,8 @@
 }
 
 .campo-input input, .select-input, .text-area-input {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 50px;
     outline: none;
     border: 2px solid rgba(0, 0, 0, 0.250);
@@ -54,9 +55,8 @@
 }
 
 .text-area-input {
-    min-height: 100px;
-    max-height: 160px;
-    height: 100%;
+    min-height: 50px;
+    max-height: 50px;
     max-width: 400px;
 }
 

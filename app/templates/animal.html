@@ -6,8 +6,8 @@
 
 {% block content %}
     <section class="registro">
-        <h2>Tabela de Animais: </h2>
         <table class="tabela-animal">
+            <h2>Tabela de Animais: </h2>
             <thead>
                 <tr>
                     <th>Nome:</th>
@@ -27,6 +27,7 @@
                     <td>{{ linha.peso if linha.peso else ''}}</td>
                     <td>{{ linha.observacoes }}</td>
                     <td class="btns-acoes">
+                        <a href="{{ url_for('detalhar_animal', id=linha.id) }}" class="btn-editar"><img src="{{ url_for('static', filename='img/icone_detalhar.png') }}" alt=""></a>
                         <a href="{{ url_for('editar_animal', id=linha.id) }}" class="btn-editar"><img src="{{ url_for('static', filename='img/icone_editar.png') }}" alt=""></a>
                         <a href="{{ url_for('excluir_animal', id=linha.id) }}" class="btn-excluir"><img src="{{ url_for('static', filename='img/icone_excluir.png') }}" alt=""></a>
                     </td>

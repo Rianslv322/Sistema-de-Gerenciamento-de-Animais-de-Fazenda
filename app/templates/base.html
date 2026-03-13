@@ -13,13 +13,11 @@
             <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" id="logo-header-img">
         </div>
         <div class="title-header">
-            <h1>{% block header %} Sistema de Gerenciamento de Animais de Fazenda {% endblock %}</h1>
+            <h1>{% block header %} AGRO LINK MANAGER {% endblock %}</h1>
         </div>
         <div class="perfil-header">
+            <h1 id="user-name">{{ current_user.primeiro_nome() }}</h1>
             <img src="{{ url_for('static', filename='img/perfil.png') }}" alt="" id="perfil-img">
-            <h1>{{ current_user.primeiro_nome() }}</h1>
-        </div>
-        <div class="sair-header">
             <a href="{{ url_for('sair') }}"><img src="{{ url_for('static', filename='img/icone_sair.png') }}" alt="" id="icone-sair-img"></a>
         </div>
     </header>
@@ -42,9 +40,6 @@
                 <a href="{{ url_for('vacina') }}" class="relatorio-menu {% if request.endpoint == 'vacina'%} icone-menu-ativo {% endif %}">
                     <img src="{{ url_for('static', filename='img/icone_vacina.png') }}" alt="">
                 </a>
-                <a href="{{ url_for('relatorio') }}" class="relatorio-menu {% if request.endpoint == 'relatorio'%} icone-menu-ativo {% endif %}">
-                    <img src="{{ url_for('static', filename='img/relatorio.png') }}" alt="">
-                </a>
             </div>
             <div class="categorias-menu">
                 <a href="{{ url_for('dashboard') }}" class="dashboard-menu {% if request.endpoint == 'dashboard' %} categoria-menu-ativa {% endif %}">Dashboard</a>
@@ -52,7 +47,6 @@
                 <a href="{{ url_for('alimentacao') }}" class="relatorio-menu {% if request.endpoint == 'alimentacao' %} categoria-menu-ativa {% endif %}">Alimentação</a>
                 <a href="{{ url_for('saude') }}" class="saude-animal-menu {% if request.endpoint == 'saude' %} categoria-menu-ativa {% endif %}">Saúde</a>
                 <a href="{{ url_for('vacina') }}" class="relatorio-menu {% if request.endpoint == 'vacina' %} categoria-menu-ativa {% endif %}">Vacinas</a>
-                <a href="{{ url_for('relatorio') }}" class="relatorio-menu {% if request.endpoint == 'relatorio' %} categoria-menu-ativa {% endif %}">Relatório</a>
             </div>
         </aside>
 

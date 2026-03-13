@@ -8,8 +8,6 @@ from app.forms import UsuarioForm, LoginForm, AnimalForm, AlimentacaoForm, Saude
 @app.route('/')
 def home():
     if (current_user.is_authenticated):
-        total_animais = Animal.query.filter_by(usuario_id = current_user.id).count()
-
         return redirect(url_for('dashboard'))
     return redirect(url_for('login'))
 
@@ -108,6 +106,19 @@ def cadastro_animal():
         form.save(current_user.id)
         return redirect(url_for('animal'))
     return render_template('cadastro_animal.html', form=form)
+
+@app.route('/detalhar-animal/<int:id>', methods=['GET', 'POST'])
+def detalhar_animal(id):
+    animal = Animal.query.get_or_404(id)
+
+    resultados = {
+        'animal': animal,
+        'vacinas': ", ".join([v.nome_vacina for v in Vacina.query.filter_by(animal_id=animal.id).all()]),
+        'observacoes': ". ".join([s.observacoes for s in Saude.query.filter_by(animal_id=animal.id).all()]),
+        'alimentacao': Alimentacao.query.filter_by(animal_id=animal.id).order_by(Alimentacao.id.desc()).first()
+    }
+
+    return render_template('detalhar.html', resultados=resultados)
 
 @app.route('/editar-animal/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -274,9 +285,3 @@ def excluir_vacina(id):
     db.session.commit()
 
     return redirect(url_for('vacina'))
-
-# Rotas - Relatório
-@app.route('/relatorio')
-@login_required
-def relatorio():
-    return render_template('relatorio.html')
