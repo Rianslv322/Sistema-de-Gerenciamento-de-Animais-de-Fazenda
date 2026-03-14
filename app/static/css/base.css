@@ -128,3 +128,89 @@ main {
     padding: 50px;
     background-color: #f6f6f6;
 }
+
+
+
+/* 
+Testando responsividade... não deu certo -__- */
+
+@media (max-width: 1024px) {
+
+    .logo-header {
+        width: 15vw;
+    }
+
+    .title-header {
+        width: 60vw;
+        font-size: 1.2rem;
+    }
+
+    .perfil-header {
+        width: 20vw;
+    }
+
+    .categorias-menu {
+        width: 20vw;
+    }
+
+    .principal {
+        width: 65vw;
+    }
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+
+    .logo-header {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .title-header {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        border: none;
+        padding: 10px;
+    }
+
+    .perfil-header {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    .menu-lateral {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+    }
+
+    .icones-menu {
+        width: 20%;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .categorias-menu {
+        width: 80%;
+    }
+
+    .principal {
+        width: 100%;
+        padding: 20px;
+    }
+
+}
